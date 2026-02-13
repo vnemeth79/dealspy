@@ -43,7 +43,10 @@ export function canUserAccessFeature(
     case 'push':
       return tier === 'pro' || tier === 'enterprise' || tier === 'trial';
     case 'telegram':
-      return tier === 'pro' || tier === 'enterprise' || tier === 'trial';
+      // Starter: never. During 3-day trial: no. Only Pro/Enterprise after trial (active paid).
+      if (tier === 'starter') return false;
+      if (status === 'trialing') return false;
+      return tier === 'pro' || tier === 'enterprise';
     case 'api':
       return tier === 'enterprise';
     case 'slack':

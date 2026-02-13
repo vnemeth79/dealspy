@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { getInitialLanguage, getTranslation, type Language } from '@/lib/i18n/config';
 
-export default function UnsubscribePage() {
+function UnsubscribeContent() {
   const searchParams = useSearchParams();
   const token = searchParams.get('token');
 
@@ -95,8 +95,8 @@ export default function UnsubscribePage() {
 
   if (status === 'invalid' || !token) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8 text-center">
+      <div className="min-h-screen flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-8 text-center">
           <div className="text-4xl mb-4">⚠️</div>
           <h1 className="text-xl font-bold text-gray-900 mb-2">{c.invalidTitle}</h1>
           <p className="text-gray-600 mb-6">{c.invalidText}</p>
@@ -113,8 +113,8 @@ export default function UnsubscribePage() {
 
   if (status === 'success') {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8 text-center">
+      <div className="min-h-screen flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-8 text-center">
           <div className="text-5xl mb-4">✅</div>
           <h1 className="text-xl font-bold text-gray-900 mb-2">{c.successTitle}</h1>
           <p className="text-gray-600 mb-6">{c.successText}</p>
@@ -133,8 +133,8 @@ export default function UnsubscribePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8">
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="max-w-md w-full bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-8">
         <div className="flex items-center gap-2 mb-6">
           <span className="text-2xl">🔍</span>
           <span className="text-xl font-bold text-gray-900">DealSpy.eu</span>
@@ -173,5 +173,13 @@ export default function UnsubscribePage() {
         </p>
       </div>
     </div>
+  );
+}
+
+export default function UnsubscribePage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-500">...</div></div>}>
+      <UnsubscribeContent />
+    </Suspense>
   );
 }

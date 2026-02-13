@@ -2,11 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { supabaseAdmin } from '@/lib/db/supabase';
 import { getUserByStripeCustomerId } from '@/lib/db/users';
-import {
-  createAndSendInvoice,
-  buildDealSpySubscriptionItem,
-  type SzamlazzBuyer,
-} from '@/lib/szamlazz';
+import { sendAdminPaymentNotification } from '@/lib/notifications/email';
 
 // Lazy initialization
 let _stripe: Stripe | null = null;
@@ -58,17 +54,33 @@ export async function POST(request: NextRequest) {
         const session = event.data.object as Stripe.Checkout.Session;
         const { userId, tier, billingCycle } = session.metadata || {};
 
-        if (userId) {
-          await supabaseAdmin.from('users').update({
+        if (userId && session.subscription) {
+          const raw = await getStripe().subscriptions.retrieve(
+            session.subscription as string
+          );
+          const sub = raw as Stripe.Subscription;
+          const isTrialing = sub.status === 'trialing';
+          const updatePayload: Record<string, unknown> = {
             stripe_customer_id: session.customer as string,
             stripe_subscription_id: session.subscription as string,
             subscription_tier: tier || 'pro',
-            subscription_status: 'trialing',
+            subscription_status: isTrialing ? 'trialing' : 'active',
             billing_cycle: billingCycle || 'monthly',
-            trial_ends_at: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString(),
-          }).eq('id', userId);
+            access_revoked_at: null,
+          };
+          const subAny = sub as Stripe.Subscription & { trial_end?: number; current_period_end?: number };
+          if (isTrialing && subAny.trial_end) {
+            updatePayload.trial_ends_at = new Date(subAny.trial_end * 1000).toISOString();
+          } else {
+            updatePayload.trial_ends_at = null;
+          }
+          if (subAny.current_period_end) {
+            updatePayload.subscription_ends_at = new Date(subAny.current_period_end * 1000).toISOString();
+          }
 
-          console.log(`[Stripe Webhook] User ${userId} checkout completed`);
+          await supabaseAdmin.from('users').update(updatePayload).eq('id', userId);
+
+          console.log(`[Stripe Webhook] User ${userId} checkout completed (${isTrialing ? 'trialing' : 'active'})`);
         }
         break;
       }
@@ -86,7 +98,9 @@ export async function POST(request: NextRequest) {
         const updateData: Record<string, unknown> = {
           subscription_status: status,
         };
-
+        if (status === 'active' || status === 'trialing') {
+          updateData.access_revoked_at = null;
+        }
         if (subData.current_period_end) {
           updateData.subscription_ends_at = new Date(subData.current_period_end * 1000).toISOString();
         }
@@ -120,10 +134,11 @@ export async function POST(request: NextRequest) {
         };
         const customerId = invoice.customer;
 
-        // Update subscription status to active (trial ended)
+        // Update subscription status to active (trial ended); clear access_revoked if re-registered
         if (invoice.billing_reason === 'subscription_cycle') {
           await supabaseAdmin.from('users').update({
             subscription_status: 'active',
+            access_revoked_at: null,
           }).eq('stripe_customer_id', customerId);
         }
 
@@ -132,60 +147,46 @@ export async function POST(request: NextRequest) {
         if (user) {
           const { data: existing } = await supabaseAdmin
             .from('payments')
-            .select('id, szamlazz_invoice_number')
+            .select('id')
             .eq('stripe_invoice_id', invoice.id)
             .maybeSingle();
 
           if (existing) {
             console.log('[Stripe Webhook] Payment already logged for invoice', invoice.id);
           } else {
-            const { data: paymentRow } = await supabaseAdmin
-              .from('payments')
-              .insert({
-                user_id: user.id,
-                stripe_invoice_id: invoice.id,
-                amount: invoice.amount_paid / 100,
-                currency: invoice.currency.toUpperCase(),
-                status: 'succeeded',
-                tier: user.subscription_tier,
-                billing_cycle: user.billing_cycle,
-              })
-              .select('id')
-              .single();
-
-            // Progile Tanácsadó Kft – számla kiküldése szamlazz.hu-n keresztül (csak ha még nincs)
-            if (process.env.SZAMLazz_AGENT_KEY && paymentRow?.id) {
-              const amountEur = invoice.amount_paid / 100;
-              const buyer: SzamlazzBuyer = {
-                name: user.email,
-                email: user.email,
-                irsz: '0000',
-                city: 'Nem megadva',
-                address: 'Online vásárlás',
-                country: 'HU',
-              };
-              const items = buildDealSpySubscriptionItem(
-                user.subscription_tier,
-                user.billing_cycle,
-                amountEur
-              );
-              const invoiceResult = await createAndSendInvoice({
-                buyer,
-                items,
-                externalId: invoice.id,
-                paymentDeadlineDays: 8,
-              });
-              if (!invoiceResult.success) {
-                console.error('[Stripe Webhook] Szamlazz invoice failed:', invoiceResult.error);
-              } else {
-                if (invoiceResult.invoiceNumber) {
-                  await supabaseAdmin
-                    .from('payments')
-                    .update({ szamlazz_invoice_number: invoiceResult.invoiceNumber })
-                    .eq('id', paymentRow.id);
+            await supabaseAdmin.from('payments').insert({
+              user_id: user.id,
+              stripe_invoice_id: invoice.id,
+              amount: invoice.amount_paid / 100,
+              currency: invoice.currency.toUpperCase(),
+              status: 'succeeded',
+              tier: user.subscription_tier,
+              billing_cycle: user.billing_cycle,
+            });
+            // Admin értesítés e-mailben, számla PDF csatolmányként
+            try {
+              const fullInvoice = await getStripe().invoices.retrieve(invoice.id);
+              const pdfUrl = fullInvoice.invoice_pdf;
+              if (pdfUrl && process.env.ADMIN_EMAIL && (process.env.RESEND_API_KEY || process.env.SENDGRID_API_KEY)) {
+                const secret = process.env.STRIPE_SECRET_KEY;
+                const pdfRes = await fetch(pdfUrl, {
+                  headers: secret ? { Authorization: `Bearer ${secret}` } : undefined,
+                });
+                if (pdfRes.ok) {
+                  const pdfBuffer = Buffer.from(await pdfRes.arrayBuffer());
+                  await sendAdminPaymentNotification({
+                    customerEmail: user.email,
+                    amount: invoice.amount_paid / 100,
+                    currency: (invoice.currency || 'eur').toUpperCase(),
+                    tier: user.subscription_tier || 'pro',
+                    billingCycle: user.billing_cycle || 'monthly',
+                    invoicePdfBuffer: pdfBuffer,
+                    invoiceNumber: fullInvoice.number || invoice.id,
+                  });
                 }
-                console.log('[Stripe Webhook] Szamlazz invoice sent:', invoiceResult.invoiceNumber);
               }
+            } catch (notifyErr) {
+              console.error('[Stripe Webhook] Admin payment notification failed:', notifyErr);
             }
           }
         }

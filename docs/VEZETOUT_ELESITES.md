@@ -175,7 +175,7 @@ Vercel Environment Variables – add ezeket (Production):
 - **`ADMIN_EMAIL`** = a saját e-mail címed (ide jönnek a scraper / AI fallback értesítések)
 - **`CRON_SECRET`** = a 0. lépésben generált hosszú véletlen string
 
-Ha **nem** használsz Szamlazz.hu-t, a **SZAMLazz_*** változókat hagyd üresen vagy ne add hozzá – a kód nem hívja a szamlazzot, ha nincs `SZAMLazz_AGENT_KEY`.
+A számlázás csak Stripe-on keresztül történik: a Stripe küldi a számlát a vevőnek e-mailben, és a Stripe Dashboardon te is megkapod.
 
 ---
 

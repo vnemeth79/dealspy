@@ -26,12 +26,17 @@
     "generic": "Something went wrong."
   },
   "register": {
+    "paymentTimingLabel": "When do you want to pay?",
+    "payNowOption": "Pay now (immediate access, first invoice today)",
+    "trialOption": "After 3-day trial (free trial, then I pay)",
     "continuePayment": "Continue to payment (after trial)",
+    "continuePaymentNow": "Continue to payment now",
     "checkEmail": "Check your email for the settings link.",
     "platformsEmpty": "Platforms (empty = all)",
     "backHome": "Back to home",
     "signUpButton": "Sign up",
-    "trialSubtitle": "3 days free. No credit card required.",
+    "trialSubtitle": "If you're already sure, pay now; if you want to try first, start the 3-day trial.",
+    "trialSubtitleDetail": "Pay now to skip the trial. With trial you get 3 days free, then we charge at the end.",
     "cancelledMessage": "Payment cancelled. You can continue anytime from settings using the link in your email.",
     "billingTitle": "Company billing",
     "billingDesc": "If you need an invoice for your company, these details will appear on the Stripe invoice (EU or local tax ID)."
@@ -45,7 +50,10 @@
     "manageSubscription": "Manage subscription",
     "saved": "Settings saved.",
     "unsubscribeDelete": "Unsubscribe (delete account)",
-    "platformsEmpty": "Platforms (empty = all)"
+    "platformsEmpty": "Platforms (empty = all)",
+    "telegramReminderTitle": "You can now set up Telegram notifications",
+    "telegramReminderBody": "Your trial has ended – with the Pro/Enterprise plan you can now enable the Telegram bot using the \"Telegram bot\" toggle below to receive instant notifications.",
+    "telegramReminderOk": "OK"
   },
   "successPage": {
     "invalidSession": "Invalid session",
@@ -68,7 +76,7 @@
   },
   "badges": {
     "platforms": "10+ platforms monitored",
-    "updates": "2x daily updates",
+    "updates": "Daily updates",
     "translation": "Auto-translation",
     "savings": "30-70% below market price"
   },
@@ -98,7 +106,7 @@
     },
     "step2": {
       "title": "Monitor",
-      "desc": "DealSpy scans platforms twice daily and finds relevant opportunities.",
+      "desc": "DealSpy scans platforms daily and finds relevant opportunities.",
       "badge": "Fully automatic"
     },
     "step3": {
@@ -195,7 +203,7 @@
     },
     "frequency": {
       "q": "How often is the data updated?",
-      "a": "Twice daily: at 10:00 AM and 3:00 PM (CET)."
+      "a": "Once daily (morning CET)."
     },
     "api": {
       "q": "Is there API access?",
@@ -248,12 +256,19 @@
     "email": "Email digest",
     "emailDesc": "Daily at 3:00 PM with the day's deals",
     "telegram": "Telegram bot",
-    "telegramDesc": "Instant notifications via @DealSpyBot"
+    "telegramDesc": "Instant notifications via @DealSpyBot",
+    "telegramUnavailable": "Pro or Enterprise plan, after trial ends",
+    "telegramAfterTrial": "Can be set up in settings after 3-day trial",
+    "telegramBubble": "Available only after the trial ends and from the Pro plan."
   },
   "success": {
     "title": "Registration successful!",
-    "subtitle": "Your 3-day trial has started.",
+    "subtitlePayNow": "Continue to payment now – you'll get full access right after.",
+    "subtitleTrial": "Your 3-day trial has started. You can use it free until then.",
+    "nextStepPayNow": "On the next step you pay immediately; after payment you'll receive notifications right away.",
+    "nextStepTrial": "We'll ask for payment at the end of the trial. Your first notification is today at 3:00 PM.",
     "firstNotification": "You'll receive your first notification today at 3:00 PM.",
+    "afterPaymentNote": "After payment you'll get access to notifications immediately.",
     "telegramConnect": "Connect Telegram bot",
     "viewSettings": "View settings"
   },

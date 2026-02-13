@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { getTranslation, type Language } from '@/lib/i18n/config';
@@ -31,6 +31,7 @@ interface SettingsData {
   notify_email: boolean;
   notify_telegram: boolean;
   telegram_connected: boolean;
+  can_use_telegram?: boolean;
   subscription_tier?: string | null;
   subscription_status?: string | null;
   trial_ends_at?: string | null;
@@ -52,7 +53,7 @@ function isSubscriptionActive(data: SettingsData): boolean {
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || '';
 
-export default function SettingsPage() {
+function SettingsContent() {
   const searchParams = useSearchParams();
   const token = searchParams.get('token');
 
@@ -77,6 +78,8 @@ export default function SettingsPage() {
   const [subscriptionEndsAt, setSubscriptionEndsAt] = useState<string | null>(null);
   const [hasBilling, setHasBilling] = useState(false);
   const [checkoutLoading, setCheckoutLoading] = useState(false);
+  const [canUseTelegram, setCanUseTelegram] = useState(false);
+  const [showTelegramReminder, setShowTelegramReminder] = useState(false);
 
   useEffect(() => {
     if (!token) {
@@ -108,12 +111,39 @@ export default function SettingsPage() {
         setTrialEndsAt(data.trial_ends_at ?? null);
         setSubscriptionEndsAt(data.subscription_ends_at ?? null);
         setHasBilling(!!data.has_billing);
+        setCanUseTelegram(!!data.can_use_telegram);
       })
       .catch(() => {
         if (!invalidToken) setError(getTranslation('errors.loadSettingsFailed', language));
       })
       .finally(() => setLoading(false));
   }, [token]);
+
+  useEffect(() => {
+    if (loading || !canUseTelegram || notifyTelegram) {
+      setShowTelegramReminder(false);
+      return;
+    }
+    const key = 'dealspy_telegram_reminder_dismissed';
+    try {
+      const raw = typeof window !== 'undefined' ? localStorage.getItem(key) : null;
+      const dismissedAt = raw ? parseInt(raw, 10) : 0;
+      const sevenDaysMs = 7 * 24 * 60 * 60 * 1000;
+      if (Date.now() - dismissedAt < sevenDaysMs) return;
+    } catch {
+      // ignore
+    }
+    setShowTelegramReminder(true);
+  }, [loading, canUseTelegram, notifyTelegram]);
+
+  const dismissTelegramReminder = () => {
+    setShowTelegramReminder(false);
+    try {
+      localStorage.setItem('dealspy_telegram_reminder_dismissed', String(Date.now()));
+    } catch {
+      // ignore
+    }
+  };
 
   const toggleCategory = (c: string) => {
     setCategories((prev) =>
@@ -133,6 +163,24 @@ export default function SettingsPage() {
     );
   };
 
+  const requestPushPermission = () => {
+    if (typeof window === 'undefined') return;
+    if (!('Notification' in window)) return;
+    if (Notification.permission === 'granted') return;
+    if (Notification.permission === 'denied') return;
+    Notification.requestPermission().then(() => {
+      const win = window as unknown as { OneSignalDeferred?: Array<(os: unknown) => void | Promise<void>> };
+      win.OneSignalDeferred?.push(async (OneSignal: unknown) => {
+        const os = OneSignal as { User?: { PushSubscription?: { optIn?: () => Promise<void> } } };
+        try {
+          await os?.User?.PushSubscription?.optIn?.();
+        } catch {
+          // ignore
+        }
+      });
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!token) return;
@@ -141,19 +189,55 @@ export default function SettingsPage() {
     setSaved(false);
     setSaving(true);
 
+    let onesignalPlayerId: string | null = null;
+    if (notifyPush && typeof window !== 'undefined') {
+      const win = window as unknown as { OneSignalDeferred?: Array<(os: unknown) => void | Promise<void>> };
+      if (win.OneSignalDeferred) {
+        try {
+          const id = await new Promise<string | null>((resolve) => {
+            win.OneSignalDeferred?.push(async (OneSignal: unknown) => {
+              const os = OneSignal as {
+                User?: {
+                  PushSubscription?: {
+                    id?: string | Promise<string | undefined>;
+                    optIn?: () => Promise<void>;
+                  };
+                };
+              };
+              const sub = os?.User?.PushSubscription;
+              if (sub?.optIn) await sub.optIn().catch(() => {});
+              let subId = sub?.id;
+              if (typeof subId === 'object' && subId !== null && 'then' in subId) subId = await subId;
+              resolve(typeof subId === 'string' ? subId : null);
+            });
+            setTimeout(() => resolve(null), 4000);
+          });
+          onesignalPlayerId = id;
+        } catch {
+          // ignore
+        }
+      }
+    }
+
     try {
+      const body: Record<string, unknown> = {
+        language,
+        categories,
+        countries,
+        keywords: keywordsText.split(',').map((k) => k.trim()).filter(Boolean),
+        sources,
+        notify_push: notifyPush,
+        notify_email: notifyEmail,
+        notify_telegram: notifyTelegram,
+      };
+      if (onesignalPlayerId) body.onesignal_player_id = onesignalPlayerId;
+
       const res = await fetch(`/api/settings?token=${encodeURIComponent(token)}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          language,
-          categories,
-          countries,
-          keywords: keywordsText.split(',').map((k) => k.trim()).filter(Boolean),
-          sources,
-          notify_push: notifyPush,
-          notify_email: notifyEmail,
-          notify_telegram: notifyTelegram,
+          ...body,
+          notify_telegram: canUseTelegram ? notifyTelegram : false,
         }),
       });
 
@@ -175,7 +259,7 @@ export default function SettingsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <p className="text-gray-600">{getTranslation('common.loading', language)}</p>
       </div>
     );
@@ -183,8 +267,8 @@ export default function SettingsPage() {
 
   if (invalidToken || !token) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8 text-center">
+      <div className="min-h-screen flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-8 text-center">
           <div className="text-4xl mb-4">⚠️</div>
           <h1 className="text-xl font-bold text-gray-900 mb-2">
             {t('settingsPage.invalidLink', language)}
@@ -204,7 +288,35 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
+    <div className="min-h-screen py-12 px-4">
+      {showTelegramReminder && (
+        <div
+          className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/40"
+          aria-modal="true"
+          role="dialog"
+          onClick={dismissTelegramReminder}
+        >
+          <div
+            className="bg-white/95 backdrop-blur-sm rounded-xl shadow-xl max-w-md w-full p-6 border border-amber-200"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="text-lg font-semibold text-gray-900 mb-2">
+              {t('settingsPage.telegramReminderTitle', language)}
+            </h2>
+            <p className="text-sm text-gray-600 mb-4">
+              {t('settingsPage.telegramReminderBody', language)}
+            </p>
+            <button
+              type="button"
+              onClick={dismissTelegramReminder}
+              className="w-full py-2.5 px-4 rounded-lg font-medium bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            >
+              {t('settingsPage.telegramReminderOk', language)}
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="max-w-xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <Link href="/" className="text-xl font-bold text-gray-900 flex items-center gap-2">
@@ -224,7 +336,7 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg p-8">
+        <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-8">
           <h1 className="text-2xl font-bold text-gray-900 mb-2">
             {t('common.settings', language)}
           </h1>
@@ -413,7 +525,11 @@ else setError(data.error || t('common.error', language));
                   <input
                     type="checkbox"
                     checked={notifyPush}
-                    onChange={(e) => setNotifyPush(e.target.checked)}
+                    onChange={(e) => {
+                      const checked = e.target.checked;
+                      setNotifyPush(checked);
+                      if (checked) requestPushPermission();
+                    }}
                     className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                   />
                   <span>{t('channels.push', language)}</span>
@@ -427,14 +543,18 @@ else setError(data.error || t('common.error', language));
                   />
                   <span>{t('channels.email', language)}</span>
                 </label>
-                <label className="flex items-center gap-2 cursor-pointer">
+                <label className={`flex items-center gap-2 ${canUseTelegram ? 'cursor-pointer' : 'cursor-not-allowed opacity-70'}`}>
                   <input
                     type="checkbox"
                     checked={notifyTelegram}
-                    onChange={(e) => setNotifyTelegram(e.target.checked)}
-                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    disabled={!canUseTelegram}
+                    onChange={(e) => canUseTelegram && setNotifyTelegram(e.target.checked)}
+                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 disabled:opacity-50"
                   />
                   <span>{t('channels.telegram', language)}</span>
+                  {!canUseTelegram && (
+                    <span className="text-xs text-gray-500">({t('channels.telegramUnavailable', language)})</span>
+                  )}
                 </label>
               </div>
             </div>
@@ -477,5 +597,13 @@ else setError(data.error || t('common.error', language));
         </div>
       </div>
     </div>
+  );
+}
+
+export default function SettingsPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-500">...</div></div>}>
+      <SettingsContent />
+    </Suspense>
   );
 }

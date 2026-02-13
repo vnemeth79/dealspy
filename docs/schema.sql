@@ -38,12 +38,15 @@ CREATE TABLE IF NOT EXISTS users (
   billing_address_line2 TEXT,
   billing_address_city TEXT,
   billing_address_postal_code TEXT,
-  billing_address_country TEXT
+  billing_address_country TEXT,
+
+  access_revoked_at TIMESTAMP WITH TIME ZONE
 );
 
 CREATE INDEX IF NOT EXISTS idx_users_token ON users(token);
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 CREATE INDEX IF NOT EXISTS idx_users_stripe_customer ON users(stripe_customer_id);
+CREATE INDEX IF NOT EXISTS idx_users_access_revoked ON users(access_revoked_at) WHERE access_revoked_at IS NOT NULL;
 
 -- updated_at trigger
 CREATE OR REPLACE FUNCTION update_updated_at_column()

@@ -40,10 +40,10 @@ Ezt a listát sorban vedd végig. Ha minden pipálva van, az app élesen fut.
 
 ---
 
-## 4. SendGrid (e-mail)
+## 4. E-mail (Resend vagy SendGrid)
 
-1. [ ] [SendGrid](https://sendgrid.com) → API key, sender (from email) – a domain legyen verifikált.
-2. [ ] Vercel env: `SENDGRID_API_KEY`, `SENDGRID_FROM_EMAIL`
+1. [ ] **Resend** (ajánlott): [resend.com](https://resend.com) → API key, domain verify → Vercel env: `RESEND_API_KEY`, `FROM_EMAIL`
+2. [ ] **Vagy SendGrid:** API key, sender (domain verifikált) → Vercel env: `SENDGRID_API_KEY`, `SENDGRID_FROM_EMAIL`
 
 ---
 
@@ -70,7 +70,7 @@ Ezt a listát sorban vedd végig. Ha minden pipálva van, az app élesen fut.
    - `NEXT_PUBLIC_APP_URL` = `https://dealspy.eu` (vagy a Vercel preview URL deploy teszthez)
    - `ADMIN_EMAIL` = a te e-mail címed (scraper hibák, AI fallback értesítések)
    - `CRON_SECRET` = egy hosszú, véletlen string (pl. jelszógenerátor)
-2. [ ] **Szamlazz.hu** (ha kell magyar számla): `SZAMLazz_AGENT_KEY` + eladó adatok. Ha csak Stripe számla kell, ezt kihagyhatod.
+2. Számla: csak Stripe – a vevő és te is a Stripe számlát kapod (e-mail + Dashboard).
 
 ---
 

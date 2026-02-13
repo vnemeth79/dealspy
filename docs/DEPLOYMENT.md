@@ -20,20 +20,9 @@ Másold a `.env.local.example`-t `.env.local`-ra (lokál) vagy add meg őket a V
 | `STRIPE_*` | dashboard.stripe.com | Live/Test kulcsok, Price ID-k, Webhook secret |
 | `NEXT_PUBLIC_APP_URL` | - | Éles: `https://dealspy.eu` |
 | `CRON_SECRET` | - | Tetszőleges titkos string (cron védelem) |
-| **SZAMLazz_*** | szamlazz.hu | Progile Tanácsadó Kft fiók (lásd alább) |
-| `EUR_TO_HUF` | - | Opcionális; számla HUF, árfolyam pl. 400 |
+## 3. Számlázás
 
-## 3. Szamlazz.hu – Progile Tanácsadó Kft
-
-1. Jelentkezz be a [szamlazz.hu](https://www.szamlazz.hu) **Progile Tanácsadó Kft** fiókjával.
-2. **Agent (API) kulcs**: Szamlazz.hu → Beállítások / API → Agent kulcs generálása.  
-   → `SZAMLazz_AGENT_KEY`
-3. Eladó adatok (ha nem csak a dashboardon vannak beállítva):
-   - `SZAMLazz_SELLER_NAME` = Progile Tanácsadó Kft
-   - `SZAMLazz_SELLER_TAX` = adószám
-   - `SZAMLazz_SELLER_IRSZ`, `SZAMLazz_SELLER_CITY`, `SZAMLazz_SELLER_ADDRESS` = székhely
-   - `SZAMLazz_SELLER_BANK`, `SZAMLazz_SELLER_ACCOUNT` = bankszámla
-4. A Stripe **invoice.payment_succeeded** webhook hívásakor a rendszer ezzel a fiókkal létrehoz és kiküld egy magyar (HUF) számlát a vásárlónak emailben.
+Csak **Stripe** számla: a Stripe automatikusan küldi a számlát a vevőnek e-mailben, és a Stripe Dashboardon (Billing → Invoices) te is letöltheted. Nincs szamlazz.hu integráció.
 
 ## 4. Stripe
 
@@ -69,7 +58,7 @@ curl -X POST "https://api.telegram.org/bot<TELEGRAM_BOT_TOKEN>/setWebhook" \
 
 - Regisztráció → email → beállítások link → számla (próba vásárlás Stripe test módban).
 - Cron: manuálisan hívd meg a cron endpointokat a `CRON_SECRET` headerrel, és nézd a logokat.
-- Számla: Stripe **invoice.payment_succeeded** (test) → ellenőrizd a szamlazz.hu fiókot és a vásárló emailjét.
+- Számla: Stripe **invoice.payment_succeeded** (test) → a Stripe küldi a vevőnek a számlát; a Dashboardon is megtekinthető.
 
 ## 9. Domain
 
@@ -77,4 +66,4 @@ curl -X POST "https://api.telegram.org/bot<TELEGRAM_BOT_TOKEN>/setWebhook" \
 
 ---
 
-**Összefoglalva:** Adatbázis (schema.sql) → env (köztük Szamlazz Progile Kft) → Stripe webhook + szamlazz integráció → Telegram webhook → OneSignal → Vercel deploy → teszt és domain.
+**Összefoglalva:** Adatbázis (schema.sql) → env → Stripe webhook (számla: csak Stripe) → Telegram webhook → OneSignal → Vercel deploy → teszt és domain.

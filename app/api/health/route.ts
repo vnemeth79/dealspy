@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { supabaseAdmin } from '@/lib/db/supabase';
+import { isEmailConfigured } from '@/lib/notifications/email';
 
 /**
  * GET /api/health
@@ -13,7 +14,7 @@ export async function GET() {
       database: 'unknown',
       anthropic: 'unknown',
       stripe: 'unknown',
-      sendgrid: 'unknown',
+      email: 'unknown',
       onesignal: 'unknown',
       telegram: 'unknown',
     },
@@ -30,7 +31,7 @@ export async function GET() {
   // Check if API keys are configured
   health.services.anthropic = process.env.ANTHROPIC_API_KEY ? 'configured' : 'not configured';
   health.services.stripe = process.env.STRIPE_SECRET_KEY ? 'configured' : 'not configured';
-  health.services.sendgrid = process.env.SENDGRID_API_KEY ? 'configured' : 'not configured';
+  health.services.email = isEmailConfigured() ? 'configured' : 'not configured';
   health.services.onesignal = process.env.ONESIGNAL_API_KEY ? 'configured' : 'not configured';
   health.services.telegram = process.env.TELEGRAM_BOT_TOKEN ? 'configured' : 'not configured';
 

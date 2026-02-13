@@ -1,16 +1,8 @@
 {
   "crons": [
-    {
-      "path": "/api/cron/scrape",
-      "schedule": "30 8 * * *"
-    },
-    {
-      "path": "/api/cron/notify",
-      "schedule": "0 9 * * *"
-    },
-    {
-      "path": "/api/cron/digest",
-      "schedule": "0 14 * * *"
-    }
+    {"path": "/api/cron/scrape", "schedule": "30 8 * * *"},
+    {"path": "/api/cron/notify", "schedule": "0 9 * * *"},
+    {"path": "/api/cron/digest", "schedule": "0 14 * * *"},
+    {"path": "/api/cron/trial-expired", "schedule": "0 2 * * *"}
   ]
 }

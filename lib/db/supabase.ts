@@ -49,6 +49,9 @@ export interface User {
   billing_address_city: string | null;
   billing_address_postal_code: string | null;
   billing_address_country: string | null;
+
+  /** Set when trial expired without payment; access revoked, user kept for email identification */
+  access_revoked_at: string | null;
 }
 
 export interface Deal {

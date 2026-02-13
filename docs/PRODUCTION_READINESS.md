@@ -7,13 +7,13 @@
 | **Adatbázis** | `docs/schema.sql` – users, deals, notifications, payments, indexek, trigger |
 | **Auth** | Regisztráció, bejelentkezés, token, jelszó hash |
 | **Stripe** | Checkout, Billing Portal, webhook (subscription + invoice), 3 napos próba |
-| **Számlázás** | Szamlazz.hu integráció (Progile Kft) – invoice.payment_succeeded után |
+| **Számlázás** | Csak Stripe – a Stripe küldi a számlát a vevőnek és a Dashboardon is elérhető |
 | **Scraperek** | 6 forrás (EER, NetBid, Ediktsdatei, Insolvenz, Proventura, Machineseeker), fetch-alapú, AI fallback minden portálon |
 | **Cron** | scrape 08:30 UTC, notify 09:00 UTC, digest 14:00 UTC (naponta 1x, Hobby) – `vercel.json` |
-| **Értesítések** | Email (SendGrid), Push (OneSignal), Telegram; digest, admin alert (scraper hiba + AI fallback) |
+| **Értesítések** | Email (Resend vagy SendGrid), Push (OneSignal), Telegram; digest, admin alert (scraper hiba + AI fallback) |
 | **Fordítás / kategória** | Anthropic Claude (cím, leírás, kategória) |
 | **Frontend** | Landing (hu/en/de), regisztráció, beállítások, árazás, FAQ; AI marketing szöveg |
-| **Health** | `GET /api/health` – DB, Anthropic, Stripe, SendGrid, OneSignal, Telegram konfig állapota |
+| **Health** | `GET /api/health` – DB, Anthropic, Stripe, email (Resend/SendGrid), OneSignal, Telegram konfig állapota |
 
 ---
 
@@ -25,11 +25,9 @@
 - [ ] **Stripe** – Products/Prices (Starter, Pro, Enterprise, havi/éves), Price ID-k → `STRIPE_PRICE_*`; live kulcsok + `STRIPE_WEBHOOK_SECRET`
 - [ ] **Stripe webhook** – endpoint: `https://dealspy.eu/api/stripe/webhook`, események: `checkout.session.completed`, `customer.subscription.updated`, `customer.subscription.deleted`, `invoice.payment_succeeded`, `invoice.payment_failed`
 - [ ] **Anthropic** – `ANTHROPIC_API_KEY` (fordítás, kategória, scraper AI fallback)
-- [ ] **SendGrid** – API key, from email (domain verifikált) → `SENDGRID_API_KEY`, `SENDGRID_FROM_EMAIL`
+- [ ] **E-mail** – Resend: `RESEND_API_KEY`, `FROM_EMAIL` (domain verified); vagy SendGrid: `SENDGRID_API_KEY`, `SENDGRID_FROM_EMAIL`
 - [ ] **OneSignal** – App ID + API key, Site URL = éles domain → `NEXT_PUBLIC_ONESIGNAL_APP_ID`, `ONESIGNAL_API_KEY`
 - [ ] **Telegram** – Bot (@BotFather) → `TELEGRAM_BOT_TOKEN`; deploy után webhook: `POST setWebhook` → `https://dealspy.eu/api/telegram/webhook`
-- [ ] **Szamlazz.hu** – Progile Tanácsadó Kft, Agent key + eladó adatok → `SZAMLazz_AGENT_KEY`, `SZAMLazz_SELLER_*`, `EUR_TO_HUF`
-
 - [ ] **Supabase migráció:** Ha a `users` tábla már létezik, futtasd a **`docs/migrations/002_billing_address.sql`**-t (céges számlázási mezők).
 
 ### 2. Környezeti változók (Vercel + lokál teszt)

@@ -45,6 +45,52 @@ Nincs külön „értékesítési böngésző” oldal az appban – a userek é
 
 ## Tesztelés – működik-e a scrape?
 
+### Dry-run: csak scraperek, nincs DB írás (lokális teszt)
+
+Ha csak azt akarod ellenőrizni, hogy **minden értékesítési site-on működik a scraper és talál is**, futtasd **dry-run** módban. Nem ír a DB-be, nem futtat fordítást/kategorizálást, nem küld admin e-mailt.
+
+**Dry-run csak fejlesztési környezetben érhető el** (`NODE_ENV !== 'production'`). Éles (Vercel) deployon a `?dryRun=1` paramétert figyelmen kívül hagyjuk.
+
+**Lokálisan (dev szerver fut, pl. `npm run dev`):**
+
+```bash
+curl -X GET "http://localhost:3000/api/cron/scrape?dryRun=1" -H "Authorization: Bearer YOUR_CRON_SECRET"
+```
+
+**PowerShell:**
+
+```powershell
+$secret = $env:CRON_SECRET  # .env.local-ból
+Invoke-RestMethod -Method GET -Uri "http://localhost:3000/api/cron/scrape?dryRun=1" -Headers @{ Authorization = "Bearer $secret" }
+```
+
+**Válasz példa:**
+
+```json
+{
+  "success": true,
+  "dryRun": true,
+  "stats": {
+    "bySource": { "eer": 12, "netbid": 5, "ediktsdatei": 0, "insolvenz": 8, "proventura": 3, "machineseeker": 20 },
+    "errors": [],
+    "aiFallbackSources": [],
+    "totalDeals": 48,
+    "durationMs": 45000
+  },
+  "sources": ["eer", "netbid", "ediktsdatei", "insolvenz", "proventura", "machineseeker"]
+}
+```
+
+- **bySource:** forrásonként hány dealet talált a scraper. Ha valahol 0, az a forrás most üres vagy a parsert frissíteni kell.
+- **errors:** ha valamelyik forrás hibázott (pl. timeout, 403), itt szerepel `{ "source": "...", "error": "..." }`.
+- **aiFallbackSources:** ezeken a forrásokon a regex 0-t adott, de az AI fallback talált dealeket → érdemes a parsert igazítani.
+
+Így egy hívással letesztelheted, hogy mind a 6 forrás (eer, netbid, ediktsdatei, insolvenz, proventura, machineseeker) működik és talál-e.
+
+---
+
+### Teljes scrape (DB írás, fordítás, cron szimuláció)
+
 1. **Környezet:** Supabase (schema lefuttatva), `CRON_SECRET` beállítva (pl. `.env.local`).
 2. **Manuális hívás** (pl. lokálisan):
 
@@ -52,7 +98,5 @@ Nincs külön „értékesítési böngésző” oldal az appban – a userek é
    curl -X POST "http://localhost:3000/api/cron/scrape" -H "Authorization: Bearer YOUR_CRON_SECRET"
    ```
 
-3. **Válasz:** JSON pl. `{ "success": true, "newDeals": N, "duplicates": D, "errors": E, "stats": { "bySource": { "eer": ..., "netbid": ..., ... }, "errors": [], "aiFallbackSources": [] } }`.
+3. **Válasz:** JSON pl. `{ "success": true, "newDeals": N, "duplicates": D, "errors": E, "stats": { "bySource": { ... }, "errors": [], "aiFallbackSources": [] } }`.
 4. **Logok:** A konzolban látszik forrásonként a deal szám és esetleges hibák.
-
-Így gyorsan látod, melyik értékesítési platform scrape-elése működik, és melyik ad 0 találatot vagy hibát.

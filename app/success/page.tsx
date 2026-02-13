@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { getInitialLanguage, getTranslation, type Language } from '@/lib/i18n/config';
 
-export default function SuccessPage() {
+function SuccessContent() {
   const searchParams = useSearchParams();
   const sessionId = searchParams.get('session_id');
 
@@ -37,7 +37,7 @@ export default function SuccessPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <p className="text-gray-600">{getTranslation('common.loading', language)}</p>
       </div>
     );
@@ -45,8 +45,8 @@ export default function SuccessPage() {
 
   if (error || !sessionId) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8 text-center">
+      <div className="min-h-screen flex items-center justify-center p-4">
+        <div className="max-w-md w-full bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-8 text-center">
           <h1 className="text-xl font-bold text-gray-900 mb-2">
             {getTranslation('successPage.invalidSession', language)}
           </h1>
@@ -67,8 +67,8 @@ export default function SuccessPage() {
   const settingsUrl = token ? `/settings?token=${encodeURIComponent(token)}` : '/';
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8 text-center">
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="max-w-md w-full bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-8 text-center">
         <div className="text-5xl mb-4">✅</div>
         <h1 className="text-2xl font-bold text-gray-900 mb-2">
           {getTranslation('successPage.thankYou', language)}
@@ -89,5 +89,13 @@ export default function SuccessPage() {
         </p>
       </div>
     </div>
+  );
+}
+
+export default function SuccessPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="text-gray-500">...</div></div>}>
+      <SuccessContent />
+    </Suspense>
   );
 }

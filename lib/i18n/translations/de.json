@@ -26,12 +26,17 @@
     "generic": "Etwas ist schiefgelaufen."
   },
   "register": {
+    "paymentTimingLabel": "Wann möchten Sie zahlen?",
+    "payNowOption": "Sofort jetzt (sofortiger Zugang, erste Rechnung heute)",
+    "trialOption": "Nach der 3-Tage-Testphase (kostenlose Testphase, danach zahlen)",
     "continuePayment": "Zahlung ausführen (nach Testphase)",
+    "continuePaymentNow": "Jetzt zur Zahlung",
     "checkEmail": "Prüfen Sie Ihr E-Mail-Postfach für den Einstellungen-Link.",
     "platformsEmpty": "Plattformen (leer = alle)",
     "backHome": "Zurück zur Startseite",
     "signUpButton": "Registrieren",
-    "trialSubtitle": "3 Tage kostenlos. Keine Karte erforderlich.",
+    "trialSubtitle": "Wenn Sie sich schon sicher sind, zahlen Sie jetzt; zum Ausprobieren starten Sie die 3-Tage-Testphase.",
+    "trialSubtitleDetail": "Jetzt zahlen und Testphase überspringen. Mit Testphase 3 Tage kostenlos, danach zahlen.",
     "cancelledMessage": "Zahlung abgebrochen. Sie können jederzeit in den Einstellungen (Link aus der E-Mail) fortfahren.",
     "billingTitle": "Firmenrechnung",
     "billingDesc": "Bei Bedarf erscheinen diese Angaben auf der Stripe-Rechnung (EU-USt-ID oder lokale Steuernummer)."
@@ -45,7 +50,10 @@
     "manageSubscription": "Abonnement verwalten",
     "saved": "Einstellungen gespeichert.",
     "unsubscribeDelete": "Abmelden (Konto löschen)",
-    "platformsEmpty": "Plattformen (leer = alle)"
+    "platformsEmpty": "Plattformen (leer = alle)",
+    "telegramReminderTitle": "Telegram-Benachrichtigungen jetzt einrichtbar",
+    "telegramReminderBody": "Ihre Testphase ist beendet – mit dem Pro- oder Enterprise-Paket können Sie den Telegram-Bot nun über den Schalter „Telegram-Bot“ unten aktivieren und sofort Benachrichtigungen erhalten.",
+    "telegramReminderOk": "Verstanden"
   },
   "successPage": {
     "invalidSession": "Ungültige Sitzung",
@@ -68,7 +76,7 @@
   },
   "badges": {
     "platforms": "10+ Plattformen überwacht",
-    "updates": "2x täglich aktualisiert",
+    "updates": "Täglich aktualisiert",
     "translation": "Automatische Übersetzung",
     "savings": "30-70% unter Marktpreis"
   },
@@ -98,7 +106,7 @@
     },
     "step2": {
       "title": "Überwachen",
-      "desc": "DealSpy durchsucht die Plattformen zweimal täglich.",
+      "desc": "DealSpy durchsucht die Plattformen täglich.",
       "badge": "Vollautomatisch"
     },
     "step3": {
@@ -195,7 +203,7 @@
     },
     "frequency": {
       "q": "Wie oft werden die Daten aktualisiert?",
-      "a": "Zweimal täglich: 10:00 und 15:00 Uhr (MEZ)."
+      "a": "Einmal täglich (morgens, MEZ)."
     },
     "api": {
       "q": "Gibt es API-Zugang?",
@@ -248,12 +256,19 @@
     "email": "E-Mail-Zusammenfassung",
     "emailDesc": "Täglich um 15:00 Uhr",
     "telegram": "Telegram-Bot",
-    "telegramDesc": "Sofort-Benachrichtigungen über @DealSpyBot"
+    "telegramDesc": "Sofort-Benachrichtigungen über @DealSpyBot",
+    "telegramUnavailable": "Pro- oder Enterprise-Paket, nach Ende der Testphase",
+    "telegramAfterTrial": "Nach der 3-Tage-Testphase in den Einstellungen einrichtbar",
+    "telegramBubble": "Nur nach Ende der Testphase und ab dem Pro-Paket verfügbar."
   },
   "success": {
     "title": "Registrierung erfolgreich!",
-    "subtitle": "Ihre 3-Tage-Testphase hat begonnen.",
+    "subtitlePayNow": "Fahren Sie jetzt mit der Zahlung fort – danach erhalten Sie sofort vollen Zugang.",
+    "subtitleTrial": "Ihre 3-Tage-Testphase hat begonnen. Bis dahin nutzen Sie kostenlos.",
+    "nextStepPayNow": "Im nächsten Schritt zahlen Sie sofort; nach erfolgreicher Zahlung erhalten Sie sofort Benachrichtigungen.",
+    "nextStepTrial": "Am Ende der Testphase bitten wir um Zahlung. Die erste Benachrichtigung kommt heute um 15:00 Uhr.",
     "firstNotification": "Die erste Benachrichtigung erhalten Sie heute um 15:00 Uhr.",
+    "afterPaymentNote": "Nach der Zahlung erhalten Sie sofort Zugang zu Benachrichtigungen.",
     "telegramConnect": "Telegram-Bot verbinden",
     "viewSettings": "Einstellungen anzeigen"
   },

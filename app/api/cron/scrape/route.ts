@@ -10,12 +10,17 @@ import type { Category } from '@/lib/db/supabase';
  * POST /api/cron/scrape
  * Run all scrapers and save new deals
  * Called by Vercel Cron at 09:30 and 14:30 CET
+ *
+ * Query: dryRun=1 — only in development: run scrapers without DB/translate/emails (local testing).
+ *        Ignored in production (NODE_ENV=production).
  */
 export async function POST(request: NextRequest) {
   // Verify cron authentication
   const isVercelCron = request.headers.get('x-vercel-cron') === '1';
   const authHeader = request.headers.get('authorization');
   const cronSecret = process.env.CRON_SECRET;
+  const dryRun =
+    process.env.NODE_ENV !== 'production' && request.nextUrl.searchParams.get('dryRun') === '1';
 
   if (!isVercelCron && authHeader !== `Bearer ${cronSecret}`) {
     return NextResponse.json(
@@ -24,13 +29,28 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  console.log('[Cron/Scrape] Starting scrape job...');
+  console.log('[Cron/Scrape] Starting scrape job...' + (dryRun ? ' (dry run)' : ''));
 
   try {
     // Run all scrapers
     const { deals: scrapedDeals, stats } = await runAllScrapers();
 
     console.log(`[Cron/Scrape] Scraped ${scrapedDeals.length} deals`);
+
+    if (dryRun) {
+      return NextResponse.json({
+        success: true,
+        dryRun: true,
+        stats: {
+          bySource: stats.bySource,
+          errors: stats.errors,
+          aiFallbackSources: stats.aiFallbackSources,
+          totalDeals: stats.totalDeals,
+          durationMs: stats.duration,
+        },
+        sources: Object.keys(stats.bySource),
+      });
+    }
 
     let newDeals = 0;
     let duplicates = 0;

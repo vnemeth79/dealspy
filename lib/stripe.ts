@@ -100,7 +100,9 @@ export interface CreateCheckoutOptions {
 }
 
 /**
- * Create a Stripe Checkout Session for subscription
+ * Create a Stripe Checkout Session for subscription.
+ * Card data is collected and validated only by Stripe's hosted Checkout page;
+ * we never receive or store card numbers, CVC, or expiry.
  */
 /** EU VAT: 2 letters + digits → type eu_vat; only digits (8–9) → hu_tin */
 function stripeTaxIdType(value: string): 'eu_vat' | 'hu_tin' {

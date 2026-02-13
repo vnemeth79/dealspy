@@ -16,7 +16,7 @@ Ha fut a dev szerver, az `GET /api/health` visszaadja, mi van beállítva:
 | **SendGrid**    | Igen | ⚠️ Üdvözlő email, digest, admin alert |
 | **OneSignal**   | Igen | ⚠️ Web push értesítések |
 | **Telegram**    | Igen | ⚠️ Bot + webhook (deploy után) |
-| **Szamlazz.hu** | Igen | ⚠️ Progile Kft számlázás (Stripe fizetés után) |
+| **Stripe számla** | Igen | ✅ Stripe küldi a vevőnek; Dashboardon is elérhető |
 
 ---
 
@@ -47,7 +47,6 @@ Másold a **`.env.local.example`**-t **`.env.local`**-ra (vagy használd a megl�
 - **OneSignal:** `NEXT_PUBLIC_ONESIGNAL_APP_ID`, `ONESIGNAL_API_KEY`
 - **Telegram:** `TELEGRAM_BOT_TOKEN`
 - **App:** `NEXT_PUBLIC_APP_URL`, `CRON_SECRET`
-- **Szamlazz:** `SZAMLazz_AGENT_KEY`, `SZAMLazz_SELLER_*`, `EUR_TO_HUF`
 - **Admin:** `ADMIN_EMAIL`
 
 ---
@@ -59,10 +58,9 @@ Másold a **`.env.local.example`**-t **`.env.local`**-ra (vagy használd a megl�
 
 ---
 
-### 4. Szamlazz.hu (Progile Tanácsadó Kft)
+### 4. Számlázás
 
-- Bejelentkezés szamlazz.hu-n → **Agent (API) kulcs** → `SZAMLazz_AGENT_KEY`.
-- Eladó adatok (név, adószám, cím, bankszámla) → `SZAMLazz_SELLER_*` (részletek: **`docs/DEPLOYMENT.md`**).
+- Csak **Stripe**: a Stripe küldi a számlát a vevőnek, a Stripe Dashboardon (Billing → Invoices) te is eléred. Nincs szamlazz.hu.
 
 ---
 
@@ -86,7 +84,7 @@ Másold a **`.env.local.example`**-t **`.env.local`**-ra (vagy használd a megl�
 |------------------------------|-----------------------------------|
 | Supabase séma (`docs/schema.sql`) | Supabase projekt + URL és kulcsok a `.env`-ben |
 | Stripe Checkout, webhook, Billing Portal | Stripe fiók, árak, webhook URL, signing secret |
-| Szamlazz integráció (lib/szamlazz.ts) | Szamlazz fiók + Agent key + eladó adatok |
+| Stripe számla (webhook) | Stripe küldi a vevőnek; Dashboardon is elérhető |
 | SendGrid küldés (email.ts) | SendGrid API key + from email |
 | OneSignal provider (frontend) | OneSignal App ID + API key |
 | Telegram webhook API | Telegram bot token + setWebhook hívás |

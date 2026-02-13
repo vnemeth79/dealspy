@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getUserByToken, updateUser } from '@/lib/db/users';
-import { validateUserSettings } from '@/lib/subscription';
+import { validateUserSettings, canUserAccessFeature } from '@/lib/subscription';
 
 /**
  * GET /api/settings?token=xxx
@@ -37,6 +37,7 @@ export async function GET(request: NextRequest) {
     notify_email: user.notify_email,
     notify_telegram: user.notify_telegram,
     telegram_connected: !!user.telegram_chat_id,
+    can_use_telegram: canUserAccessFeature(user, 'telegram'),
     subscription_tier: user.subscription_tier,
     subscription_status: user.subscription_status,
     trial_ends_at: user.trial_ends_at,
@@ -109,7 +110,8 @@ export async function PUT(request: NextRequest) {
     }
 
     if (body.notify_telegram !== undefined) {
-      updates.notify_telegram = body.notify_telegram;
+      const canTelegram = canUserAccessFeature(user, 'telegram');
+      updates.notify_telegram = canTelegram ? body.notify_telegram : false;
     }
 
     if (body.onesignal_player_id !== undefined) {

@@ -59,7 +59,7 @@ export default function ImpressumPage() {
   const c = content[language] || content.en;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
+    <div className="min-h-screen py-12 px-4">
       <div className="max-w-2xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <Link href="/" className="text-xl font-bold text-gray-900 flex items-center gap-2">
@@ -79,7 +79,7 @@ export default function ImpressumPage() {
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-lg p-8">
+        <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-lg p-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">{c.title}</h1>
           <p className="text-gray-600 mb-8">{c.subtitle}</p>
 

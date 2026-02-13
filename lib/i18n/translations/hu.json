@@ -26,12 +26,17 @@
     "generic": "Hiba történt."
   },
   "register": {
+    "paymentTimingLabel": "Mikor szeretnél fizetni?",
+    "payNowOption": "Rögtön most (azonnali hozzáférés, első számla ma)",
+    "trialOption": "3 napos próba után (ingyenes próba, utána fizetem)",
     "continuePayment": "Fizetés megadása (próba után)",
+    "continuePaymentNow": "Fizetés megadása most",
     "checkEmail": "Ellenőrizd az email fiókodat a beállítások linkkel.",
     "platformsEmpty": "Platformok (üres = mind)",
     "backHome": "Vissza a főoldalra",
     "signUpButton": "Regisztráció",
-    "trialSubtitle": "3 nap ingyen. Nincs bankkártya kötelező.",
+    "trialSubtitle": "Ha már biztos vagy benne, fizess most; ha ki akarod próbálni, indítsd el a 3 napos próbát.",
+    "trialSubtitleDetail": "Azonnali fizetéssel átugorhatod a próbát. Próbával 3 napig ingyen tesztelheted, a próba végén fizetsz.",
     "cancelledMessage": "Fizetés megszakítva. Bármikor folytathatod a beállításokból az emailben kapott linkkel.",
     "billingTitle": "Céges számlázás",
     "billingDesc": "Ha céges számlát kérsz, a Stripe számlára kerülnek az alábbi adatok (EU vagy magyar adószám)."
@@ -45,7 +50,10 @@
     "manageSubscription": "Előfizetés kezelése",
     "saved": "Beállítások mentve.",
     "unsubscribeDelete": "Leiratkozás (fiók törlése)",
-    "platformsEmpty": "Platformok (üres = mind)"
+    "platformsEmpty": "Platformok (üres = mind)",
+    "telegramReminderTitle": "Most már beállíthatod a Telegram értesítéseket",
+    "telegramReminderBody": "A próbaidőszakod lejárt – a Pro/Enterprise csomaggal most már bekapcsolhatod a Telegram botot az alábbi „Telegram bot” kapcsolóval, és azonnali értesítéseket kapsz.",
+    "telegramReminderOk": "Rendben"
   },
   "successPage": {
     "invalidSession": "Érvénytelen munkamenet",
@@ -68,7 +76,7 @@
   },
   "badges": {
     "platforms": "10+ platform figyelése",
-    "updates": "Napi 2x frissítés",
+    "updates": "Napi frissítés",
     "translation": "Automatikus fordítás",
     "savings": "30-70% a piaci ár alatt"
   },
@@ -98,7 +106,7 @@
     },
     "step2": {
       "title": "Figyel",
-      "desc": "A DealSpy naponta kétszer végigfésüli a platformokat és megtalálja a releváns lehetőségeket.",
+      "desc": "A DealSpy naponta végigfésüli a platformokat és megtalálja a releváns lehetőségeket.",
       "badge": "Teljesen automatikus"
     },
     "step3": {
@@ -195,7 +203,7 @@
     },
     "frequency": {
       "q": "Milyen gyakran frissülnek az adatok?",
-      "a": "Naponta kétszer: reggel 10:00-kor és délután 15:00-kor (CET)."
+      "a": "Naponta egyszer (reggel, CET)."
     },
     "api": {
       "q": "Van API hozzáférés?",
@@ -248,12 +256,19 @@
     "email": "Email összefoglaló",
     "emailDesc": "Naponta 15:00-kor a napi deal-ek",
     "telegram": "Telegram bot",
-    "telegramDesc": "Azonnali értesítés a @DealSpyBot-on"
+    "telegramDesc": "Azonnali értesítés a @DealSpyBot-on",
+    "telegramUnavailable": "Pro/Enterprise csomagban, próbaidő letelte után",
+    "telegramAfterTrial": "Próbaidő (3 nap) letelte után a beállításokban állítható be",
+    "telegramBubble": "Csak a próbaidőszak lejárta után és a Pro csomagtól elérhető."
   },
   "success": {
     "title": "Sikeres regisztráció!",
-    "subtitle": "A 3 napos próbaidőszakod elkezdődött.",
+    "subtitlePayNow": "Most folytasd a fizetéssel – utána azonnal megkapod a teljes hozzáférést.",
+    "subtitleTrial": "A 3 napos próbaidőszakod elkezdődött. Addig ingyenesen használhatod.",
+    "nextStepPayNow": "A következő lépésben azonnal fizetsz; a sikeres fizetés után rögtön értesítéseket kapsz.",
+    "nextStepTrial": "Próbaidő végén kérjük a fizetést. Addig az első értesítést ma 15:00-kor kapod.",
     "firstNotification": "Az első értesítést ma 15:00-kor kapod.",
+    "afterPaymentNote": "A fizetés után azonnal hozzáférést kapsz az értesítésekhez.",
     "telegramConnect": "Telegram bot összekapcsolása",
     "viewSettings": "Beállítások megtekintése"
   },

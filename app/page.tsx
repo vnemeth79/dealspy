@@ -33,7 +33,7 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+    <div className="min-h-screen">
       {/* HEADER */}
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -123,7 +123,7 @@ export default function LandingPage() {
       </section>
 
       {/* PROBLEM/SOLUTION */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
             {t('problem.title', language)}
@@ -136,7 +136,7 @@ export default function LandingPage() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="bg-white p-8 rounded-2xl shadow-sm text-center"
+                className="bg-white/95 backdrop-blur-sm p-8 rounded-2xl shadow-sm text-center"
               >
                 <div className="text-5xl mb-4">{item.icon}</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">
@@ -187,7 +187,7 @@ export default function LandingPage() {
       </section>
 
       {/* SOURCES */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">
             {t('sources.title', language)}
@@ -240,7 +240,7 @@ export default function LandingPage() {
                   {group.platforms.map((platform, j) => (
                     <div
                       key={j}
-                      className="bg-white p-4 rounded-lg border border-gray-200"
+                      className="bg-white/95 backdrop-blur-sm p-4 rounded-lg border border-gray-200"
                     >
                       <div className="font-medium text-gray-900">
                         {platform.name}
@@ -273,7 +273,7 @@ export default function LandingPage() {
               { icon: '⏰', key: 'deadline' },
               { icon: '💰', key: 'savings' },
             ].map((feature, i) => (
-              <div key={i} className="bg-gray-50 p-6 rounded-xl">
+              <div key={i} className="bg-white/80 backdrop-blur-sm p-6 rounded-xl">
                 <div className="text-3xl mb-4">{feature.icon}</div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   {t(`features.${feature.key}.title`, language)}
@@ -286,7 +286,7 @@ export default function LandingPage() {
       </section>
 
       {/* PRICING */}
-      <section id="pricing" className="py-20 bg-gray-50">
+      <section id="pricing" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">
             {t('pricing.title', language)}
@@ -296,9 +296,9 @@ export default function LandingPage() {
           </p>
 
           {/* Billing Toggle */}
-          <div className="flex items-center justify-center gap-4 mb-12">
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-12">
             <span
-              className={`text-lg ${
+              className={`text-lg shrink-0 min-w-[6rem] text-center ${
                 billingCycle === 'monthly'
                   ? 'text-gray-900 font-semibold'
                   : 'text-gray-500'
@@ -307,21 +307,23 @@ export default function LandingPage() {
               Havi fizetés
             </span>
             <button
+              type="button"
               onClick={() =>
                 setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')
               }
-              className={`relative w-16 h-8 rounded-full transition-colors ${
+              className={`relative w-14 h-8 rounded-full shrink-0 transition-colors ${
                 billingCycle === 'yearly' ? 'bg-blue-600' : 'bg-gray-300'
               }`}
+              aria-pressed={billingCycle === 'yearly'}
             >
               <span
-                className={`absolute top-1 w-6 h-6 rounded-full bg-white shadow transition-transform ${
-                  billingCycle === 'yearly' ? 'translate-x-9' : 'translate-x-1'
+                className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white shadow transition-transform ${
+                  billingCycle === 'yearly' ? 'translate-x-7' : 'translate-x-0'
                 }`}
               />
             </button>
             <span
-              className={`text-lg ${
+              className={`text-lg shrink-0 min-w-[6rem] text-center ${
                 billingCycle === 'yearly'
                   ? 'text-gray-900 font-semibold'
                   : 'text-gray-500'
@@ -330,7 +332,7 @@ export default function LandingPage() {
               Éves fizetés
             </span>
             {billingCycle === 'yearly' && (
-              <span className="bg-green-100 text-green-700 text-sm font-medium px-3 py-1 rounded-full">
+              <span className="bg-green-100 text-green-700 text-sm font-medium px-3 py-1 rounded-full shrink-0">
                 20% megtakarítás
               </span>
             )}
@@ -339,7 +341,7 @@ export default function LandingPage() {
           {/* Pricing Cards */}
           <div className="grid md:grid-cols-3 gap-8 items-start">
             {/* Starter */}
-            <div className="bg-white rounded-2xl p-8 border-2 border-gray-200">
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 border-2 border-gray-200">
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">STARTER</h3>
                 <div className="flex items-baseline justify-center gap-1">
@@ -438,7 +440,7 @@ export default function LandingPage() {
             </div>
 
             {/* Enterprise */}
-            <div className="bg-white rounded-2xl p-8 border-2 border-gray-200">
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 border-2 border-gray-200">
               <div className="text-center mb-6">
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">
                   ENTERPRISE
@@ -506,7 +508,7 @@ export default function LandingPage() {
             {(['trial', 'payment', 'cancel', 'frequency', 'api'] as const).map((key, i) => (
               <details
                 key={key}
-                className="bg-white rounded-lg border border-gray-200 group"
+                className="bg-white/95 backdrop-blur-sm rounded-lg border border-gray-200 group"
               >
                 <summary className="p-4 font-medium text-gray-900 cursor-pointer hover:bg-gray-50 list-none flex items-center justify-between">
                   {t(`faq.${key}.q`, language)}
