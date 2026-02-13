@@ -55,7 +55,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#1e3a5f" />
       </head>
       <body className={`${inter.className} antialiased`}>
-        <div className="relative z-[1] min-h-screen">
+        <div className="relative z-[1] min-h-screen bg-transparent">
           <OneSignalProvider />
           {children}
         </div>

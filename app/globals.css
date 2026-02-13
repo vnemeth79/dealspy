@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fdfcfb;
+  --background: #f5f2ec;
   --foreground: #374151;
   --accent: #1e40af;
   /* Aukció/raktár hangulatú háttér. Saját kép: másold public/bg-auction.jpg-be és használd: url("/bg-auction.jpg") */
@@ -16,6 +16,9 @@
 }
 
 /* Dark mode kikapcsolva: mindig világos háttér, sötét szöveg – jó olvashatóság */
+html {
+  background: var(--background);
+}
 body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
@@ -24,16 +27,16 @@ body {
   position: relative;
 }
 
-/* Világos overlay – háttérkép alig látszik, szöveg jól olvasható */
+/* Homokszínű, világos bézs overlay – háttérkép átjön, szöveg olvasható */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(253, 252, 251, 0.97) 0%,
-    rgba(252, 251, 250, 0.98) 50%,
-    rgba(253, 252, 251, 0.97) 100%
+    rgba(245, 242, 236, 0.88) 0%,
+    rgba(242, 238, 230, 0.90) 50%,
+    rgba(245, 242, 236, 0.88) 100%
   );
   pointer-events: none;
   z-index: 0;
