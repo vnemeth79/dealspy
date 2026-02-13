@@ -185,6 +185,7 @@ export async function POST(request: NextRequest) {
       billing_address_city: billing_address_city?.trim() || null,
       billing_address_postal_code: billing_address_postal_code?.trim() || null,
       billing_address_country: billing_address_country?.trim() || null,
+      access_revoked_at: null,
     });
 
     // Create Stripe checkout session
