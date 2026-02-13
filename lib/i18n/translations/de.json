@@ -59,7 +59,8 @@
     "invalidSession": "Ungültige Sitzung",
     "invalidSessionDesc": "Die Zahlung war möglicherweise erfolgreich, die Sitzung konnte aber nicht gefunden werden. Verwenden Sie den Einstellungen-Link aus Ihrer E-Mail.",
     "thankYou": "Vielen Dank für Ihre Zahlung!",
-    "thankYouDesc": "Ihr Abonnement ist aktiv. Sie erhalten weiterhin Benachrichtigungen gemäß Ihren Einstellungen."
+    "thankYouDesc": "Ihr Abonnement ist aktiv. Sie erhalten weiterhin Benachrichtigungen gemäß Ihren Einstellungen.",
+    "telegramHint": "Telegram-Benachrichtigungen können Sie in den Einstellungen aktivieren (Benachrichtigungskanäle)."
   },
   "unsubscribePage": {
     "failed": "Abmeldung fehlgeschlagen.",
@@ -275,7 +276,7 @@
     "telegramDesc": "Sofort-Benachrichtigungen über @DealSpyBot",
     "telegramUnavailable": "Pro- oder Enterprise-Paket, nach Ende der Testphase",
     "telegramAfterTrial": "Nach der 3-Tage-Testphase in den Einstellungen einrichtbar",
-    "telegramBubble": "Nur nach Ende der Testphase und ab dem Pro-Paket verfügbar."
+    "telegramBubble": "Nur nach Ende der Testphase und Zahlung, bei Pro/Enterprise. In den Einstellungen aktivierbar."
   },
   "success": {
     "title": "Registrierung erfolgreich!",

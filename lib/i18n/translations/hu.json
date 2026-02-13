@@ -59,7 +59,8 @@
     "invalidSession": "Érvénytelen munkamenet",
     "invalidSessionDesc": "A fizetés sikeres lehet, de a munkamenet nem található. Használd a beállítások linket az emailből.",
     "thankYou": "Köszönjük a fizetést!",
-    "thankYouDesc": "Az előfizetésed aktív. Az értesítéseket továbbra is megkapod a beállításaid alapján."
+    "thankYouDesc": "Az előfizetésed aktív. Az értesítéseket továbbra is megkapod a beállításaid alapján.",
+    "telegramHint": "A Telegram értesítéseket a Beállításokban kapcsolhatod be (Értesítési csatornák)."
   },
   "unsubscribePage": {
     "failed": "Leiratkozás sikertelen.",
@@ -275,7 +276,7 @@
     "telegramDesc": "Azonnali értesítés a @DealSpyBot-on",
     "telegramUnavailable": "Pro/Enterprise csomagban, próbaidő letelte után",
     "telegramAfterTrial": "Próbaidő (3 nap) letelte után a beállításokban állítható be",
-    "telegramBubble": "Csak a próbaidőszak lejárta után és a Pro csomagtól elérhető."
+    "telegramBubble": "Csak a próbaidőszak lejárta és a fizetés után, Pro/Enterprise csomagnál. A Beállításokban kapcsolhatod be."
   },
   "success": {
     "title": "Sikeres regisztráció!",

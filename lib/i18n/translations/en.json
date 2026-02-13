@@ -59,7 +59,8 @@
     "invalidSession": "Invalid session",
     "invalidSessionDesc": "Payment may have succeeded, but the session could not be found. Use the settings link from your email.",
     "thankYou": "Thank you for your payment!",
-    "thankYouDesc": "Your subscription is active. You will continue to receive notifications based on your settings."
+    "thankYouDesc": "Your subscription is active. You will continue to receive notifications based on your settings.",
+    "telegramHint": "You can enable Telegram notifications in Settings (Notification channels)."
   },
   "unsubscribePage": {
     "failed": "Unsubscribe failed.",
@@ -275,7 +276,7 @@
     "telegramDesc": "Instant notifications via @DealSpyBot",
     "telegramUnavailable": "Pro or Enterprise plan, after trial ends",
     "telegramAfterTrial": "Can be set up in settings after 3-day trial",
-    "telegramBubble": "Available only after the trial ends and from the Pro plan."
+    "telegramBubble": "Only after trial ends and payment, with Pro/Enterprise. You can enable it in Settings."
   },
   "success": {
     "title": "Registration successful!",
