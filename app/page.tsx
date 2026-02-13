@@ -26,7 +26,8 @@ export default function LandingPage() {
 
   const handleSelectTier = (tier: 'starter' | 'pro' | 'enterprise') => {
     if (tier === 'enterprise') {
-      window.location.href = 'mailto:info@dealspy.eu?subject=Enterprise%20csomag%20érdeklődés';
+      const subject = encodeURIComponent(t('pricing.enterpriseSubject', language));
+      window.location.href = `mailto:info@dealspy.eu?subject=${subject}`;
     } else {
       window.location.href = `/register?tier=${tier}&billing=${billingCycle}`;
     }
@@ -94,7 +95,7 @@ export default function LandingPage() {
           <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
             {t('hero.title', language)}
             <br />
-            <span className="text-blue-600">{t('hero.titleHighlight', language)}</span>
+            <span className="text-blue-800">{t('hero.titleHighlight', language)}</span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
             {t('hero.subtitle', language)}
@@ -200,41 +201,41 @@ export default function LandingPage() {
             {[
               {
                 flag: '🇭🇺',
-                country: 'Magyarország',
+                countryKey: 'sources.countryHu' as const,
                 platforms: [
-                  { name: 'EÉR', desc: 'Hivatalos csődvagyon értékesítési platform' },
+                  { name: 'EÉR', descKey: 'sources.descEer' as const },
                 ],
               },
               {
                 flag: '🇦🇹',
-                country: 'Ausztria',
+                countryKey: 'sources.countryAt' as const,
                 platforms: [
-                  { name: 'Ediktsdatei', desc: 'Bírósági hirdetmények' },
-                  { name: 'KSV1870', desc: 'Hitelezővédelmi csődlista' },
+                  { name: 'Ediktsdatei', descKey: 'sources.descEdiktsdatei' as const },
+                  { name: 'KSV1870', descKey: 'sources.descKsv' as const },
                 ],
               },
               {
                 flag: '🇩🇪',
-                country: 'Németország',
+                countryKey: 'sources.countryDe' as const,
                 platforms: [
-                  { name: 'Insolvenzbekanntmachungen', desc: 'Hivatalos csődhirdetések' },
-                  { name: 'NetBid', desc: 'Ipari aukciók' },
-                  { name: 'Proventura', desc: 'Gépek, IT, járművek' },
+                  { name: 'Insolvenzbekanntmachungen', descKey: 'sources.descInsolvenz' as const },
+                  { name: 'NetBid', descKey: 'sources.descNetbid' as const },
+                  { name: 'Proventura', descKey: 'sources.descProventura' as const },
                 ],
               },
               {
                 flag: '🇪🇺',
-                country: 'EU piacterek',
+                countryKey: 'sources.countryEu' as const,
                 platforms: [
-                  { name: 'Machineseeker', desc: 'Európa #1 géppiac' },
-                  { name: 'Mascus', desc: 'Építőipari gépek' },
-                  { name: 'TruckScout24', desc: 'Haszongépjárművek' },
+                  { name: 'Machineseeker', descKey: 'sources.descMachineseeker' as const },
+                  { name: 'Mascus', descKey: 'sources.descMascus' as const },
+                  { name: 'TruckScout24', descKey: 'sources.descTruckScout' as const },
                 ],
               },
             ].map((group, i) => (
               <div key={i}>
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                  {group.flag} {group.country}
+                  {group.flag} {t(group.countryKey, language)}
                 </h3>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                   {group.platforms.map((platform, j) => (
@@ -246,7 +247,7 @@ export default function LandingPage() {
                         {platform.name}
                       </div>
                       <div className="text-sm text-gray-500">
-                        {platform.desc}
+                        {t(platform.descKey, language)}
                       </div>
                     </div>
                   ))}
@@ -304,7 +305,7 @@ export default function LandingPage() {
                   : 'text-gray-500'
               }`}
             >
-              Havi fizetés
+              {t('pricing.monthly', language)}
             </span>
             <button
               type="button"
@@ -329,11 +330,11 @@ export default function LandingPage() {
                   : 'text-gray-500'
               }`}
             >
-              Éves fizetés
+              {t('pricing.yearly', language)}
             </span>
             {billingCycle === 'yearly' && (
               <span className="bg-green-100 text-green-700 text-sm font-medium px-3 py-1 rounded-full shrink-0">
-                20% megtakarítás
+                {t('pricing.yearlySavings', language)}
               </span>
             )}
           </div>
@@ -348,40 +349,40 @@ export default function LandingPage() {
                   <span className="text-5xl font-bold text-gray-900">
                     €{PRICING.starter[billingCycle]}
                   </span>
-                  <span className="text-gray-500">/hó</span>
+                  <span className="text-gray-500">{t('pricing.perMonth', language)}</span>
                 </div>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-2">
                   <span className="text-green-500">✓</span>
-                  <span>1 ország</span>
+                  <span>1 {t('pricing.features.countries', language)}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-green-500">✓</span>
-                  <span>3 platform</span>
+                  <span>3 {t('pricing.features.platforms', language)}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-green-500">✓</span>
-                  <span>2 kategória</span>
+                  <span>2 {t('pricing.features.categories', language)}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-green-500">✓</span>
-                  <span>5 kulcsszó</span>
+                  <span>5 {t('pricing.features.keywords', language)}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-green-500">✓</span>
-                  <span>Email digest</span>
+                  <span>{t('pricing.features.emailDigest', language)}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-green-500">✓</span>
-                  <span>Email support</span>
+                  <span>{t('pricing.features.emailSupport', language)}</span>
                 </li>
               </ul>
               <button
                 onClick={() => handleSelectTier('starter')}
                 className="w-full py-3 px-6 rounded-lg font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-colors"
               >
-                Próbáld ki ingyen
+                {t('pricing.tryFree', language)}
               </button>
             </div>
 
@@ -389,7 +390,7 @@ export default function LandingPage() {
             <div className="relative bg-gradient-to-b from-blue-600 to-blue-700 text-white rounded-2xl p-8 ring-4 ring-blue-300 scale-105">
               <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                 <span className="bg-yellow-400 text-yellow-900 text-sm font-bold px-4 py-1 rounded-full">
-                  ⭐ NÉPSZERŰ
+                  ⭐ {t('pricing.popular', language).toUpperCase()}
                 </span>
               </div>
               <div className="text-center mb-6">
@@ -398,44 +399,44 @@ export default function LandingPage() {
                   <span className="text-5xl font-bold">
                     €{PRICING.pro[billingCycle]}
                   </span>
-                  <span className="text-blue-200">/hó</span>
+                  <span className="text-blue-800">{t('pricing.perMonth', language)}</span>
                 </div>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-2">
-                  <span className="text-blue-200">✓</span>
-                  <span>3 ország</span>
+                  <span className="text-blue-800">✓</span>
+                  <span>3 {t('pricing.features.countries', language)}</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-blue-200">✓</span>
-                  <span>Összes platform</span>
+                  <span className="text-blue-800">✓</span>
+                  <span>{t('pricing.features.allPlatforms', language)}</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-blue-200">✓</span>
-                  <span>Összes kategória</span>
+                  <span className="text-blue-800">✓</span>
+                  <span>{t('pricing.features.allCategories', language)}</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-blue-200">✓</span>
-                  <span>20 kulcsszó</span>
+                  <span className="text-blue-800">✓</span>
+                  <span>20 {t('pricing.features.keywords', language)}</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-blue-200">✓</span>
-                  <span>Azonnali push + email</span>
+                  <span className="text-blue-800">✓</span>
+                  <span>{t('pricing.features.instantPushEmail', language)}</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-blue-200">✓</span>
-                  <span>Telegram bot</span>
+                  <span className="text-blue-800">✓</span>
+                  <span>{t('pricing.features.telegram', language)}</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="text-blue-200">✓</span>
-                  <span>Prioritás support</span>
+                  <span className="text-blue-800">✓</span>
+                  <span>{t('pricing.features.prioritySupport', language)}</span>
                 </li>
               </ul>
               <button
                 onClick={() => handleSelectTier('pro')}
                 className="w-full py-3 px-6 rounded-lg font-semibold bg-white text-blue-600 hover:bg-blue-50 transition-colors"
               >
-                Próbáld ki ingyen
+                {t('pricing.tryFree', language)}
               </button>
             </div>
 
@@ -449,51 +450,51 @@ export default function LandingPage() {
                   <span className="text-5xl font-bold text-gray-900">
                     €{PRICING.enterprise[billingCycle]}
                   </span>
-                  <span className="text-gray-500">/hó</span>
+                  <span className="text-gray-500">{t('pricing.perMonth', language)}</span>
                 </div>
               </div>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-2">
                   <span className="text-green-500">✓</span>
-                  <span>Összes ország</span>
+                  <span>{t('pricing.features.allCountries', language)}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-green-500">✓</span>
-                  <span>Összes platform</span>
+                  <span>{t('pricing.features.allPlatforms', language)}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-green-500">✓</span>
-                  <span>Összes kategória</span>
+                  <span>{t('pricing.features.allCategories', language)}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-green-500">✓</span>
-                  <span>Korlátlan kulcsszó</span>
+                  <span>{t('pricing.features.unlimited', language)} {t('pricing.features.keywords', language)}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-green-500">✓</span>
-                  <span>Minden értesítési csatorna</span>
+                  <span>{t('pricing.features.allChannels', language)}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-green-500">✓</span>
-                  <span>API hozzáférés</span>
+                  <span>{t('pricing.features.api', language)}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="text-green-500">✓</span>
-                  <span>Dedikált support</span>
+                  <span>{t('pricing.features.dedicatedSupport', language)}</span>
                 </li>
               </ul>
               <button
                 onClick={() => handleSelectTier('enterprise')}
                 className="w-full py-3 px-6 rounded-lg font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-colors"
               >
-                Kapcsolatfelvétel
+                {t('pricing.contact', language)}
               </button>
             </div>
           </div>
 
           <div className="text-center mt-8 text-gray-500">
-            💳 Biztonságos fizetés Stripe-on keresztül | 🔄 Bármikor lemondható |
-            💰 3 napos pénzvisszafizetés
+            💳 {t('pricing.trust.secure', language)} | 🔄 {t('pricing.trust.cancel', language)} |
+            💰 {t('pricing.trust.refund', language)}
           </div>
         </div>
       </section>
@@ -538,7 +539,7 @@ export default function LandingPage() {
           >
             🚀 {t('cta.button', language)}
           </Link>
-          <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-blue-200">
+          <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-gray-600">
             <span>🔒 256-bit SSL titkosítás</span>
             <span>🇪🇺 GDPR kompatibilis</span>
             <span>⭐ 4.8/5 értékelés</span>
@@ -555,57 +556,57 @@ export default function LandingPage() {
                 <span className="text-2xl">🔍</span>
                 <span className="text-xl font-bold text-white">DealSpy.eu</span>
               </div>
-              <p className="text-sm">EU csődvagyon monitoring</p>
+              <p className="text-sm">{t('footer.tagline', language)}</p>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">Termék</h4>
+              <h4 className="text-white font-semibold mb-4">{t('footer.product', language)}</h4>
               <ul className="space-y-2 text-sm">
                 <li>
                   <a href="#features" className="hover:text-white">
-                    Funkciók
+                    {t('footer.features', language)}
                   </a>
                 </li>
                 <li>
                   <a href="#pricing" className="hover:text-white">
-                    Árazás
+                    {t('footer.pricing', language)}
                   </a>
                 </li>
                 <li>
                   <a href="#faq" className="hover:text-white">
-                    GYIK
+                    {t('faq.title', language)}
                   </a>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">Céginfo</h4>
+              <h4 className="text-white font-semibold mb-4">{t('footer.company', language)}</h4>
               <ul className="space-y-2 text-sm">
                 <li>
                   <Link href="/impressum" className="hover:text-white">
-                    Impressum
+                    {t('footer.impressum', language)}
                   </Link>
                 </li>
                 <li>
                   <Link href="/privacy" className="hover:text-white">
-                    Adatvédelem
+                    {t('footer.privacy', language)}
                   </Link>
                 </li>
                 <li>
                   <Link href="/terms" className="hover:text-white">
-                    ÁSZF
+                    {t('footer.terms', language)}
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">Kapcsolat</h4>
+              <h4 className="text-white font-semibold mb-4">{t('footer.contact', language)}</h4>
               <ul className="space-y-2 text-sm">
                 <li>info@dealspy.eu</li>
               </ul>
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center text-sm">
-            © {new Date().getFullYear()} DealSpy.eu | Minden jog fenntartva
+            © {new Date().getFullYear()} DealSpy.eu | {t('footer.copyright', language)}
           </div>
         </div>
       </footer>

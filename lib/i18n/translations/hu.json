@@ -117,7 +117,20 @@
   },
   "sources": {
     "title": "Ezeket a platformokat figyeljük",
-    "expanding": "Folyamatosan bővülő forráslista"
+    "expanding": "Folyamatosan bővülő forráslista",
+    "countryHu": "Magyarország",
+    "countryAt": "Ausztria",
+    "countryDe": "Németország",
+    "countryEu": "EU piacterek",
+    "descEer": "Hivatalos csődvagyon értékesítési platform",
+    "descEdiktsdatei": "Bírósági hirdetmények",
+    "descKsv": "Hitelezővédelmi csődlista",
+    "descInsolvenz": "Hivatalos csődhirdetések",
+    "descNetbid": "Ipari aukciók",
+    "descProventura": "Gépek, IT, járművek",
+    "descMachineseeker": "Európa #1 géppiac",
+    "descMascus": "Építőipari gépek",
+    "descTruckScout": "Haszongépjárművek"
   },
   "features": {
     "title": "Minden, amire szükséged van",
@@ -160,6 +173,7 @@
     "popular": "Népszerű",
     "tryFree": "Próbáld ki ingyen",
     "contact": "Kapcsolatfelvétel",
+    "enterpriseSubject": "Enterprise csomag érdeklődés",
     "features": {
       "countries": "ország",
       "platforms": "platform",
@@ -171,6 +185,8 @@
       "unlimited": "Korlátlan",
       "emailDigest": "Email összefoglaló",
       "instantPush": "Azonnali push",
+      "instantPushEmail": "Azonnali push + email",
+      "allChannels": "Minden értesítési csatorna",
       "telegram": "Telegram bot",
       "emailSupport": "Email support",
       "prioritySupport": "Prioritás support",
@@ -273,6 +289,7 @@
     "viewSettings": "Beállítások megtekintése"
   },
   "footer": {
+    "tagline": "EU csődvagyon monitoring",
     "product": "Termék",
     "features": "Funkciók",
     "pricing": "Árazás",

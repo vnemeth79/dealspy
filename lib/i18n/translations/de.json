@@ -117,7 +117,20 @@
   },
   "sources": {
     "title": "Diese Plattformen überwachen wir",
-    "expanding": "Ständig wachsende Quellenliste"
+    "expanding": "Ständig wachsende Quellenliste",
+    "countryHu": "Ungarn",
+    "countryAt": "Österreich",
+    "countryDe": "Deutschland",
+    "countryEu": "EU-Märkte",
+    "descEer": "Offizielle Insolvenz-Verkaufsplattform",
+    "descEdiktsdatei": "Gerichtliche Bekanntmachungen",
+    "descKsv": "Gläubigerschutz-Insolvenzliste",
+    "descInsolvenz": "Offizielle Insolvenzbekanntmachungen",
+    "descNetbid": "Industrieauktionen",
+    "descProventura": "Maschinen, IT, Fahrzeuge",
+    "descMachineseeker": "Europas #1 Maschinenmarkt",
+    "descMascus": "Bau- und Baumaschinen",
+    "descTruckScout": "Nutzfahrzeuge"
   },
   "features": {
     "title": "Alles, was Sie brauchen",
@@ -160,6 +173,7 @@
     "popular": "Beliebt",
     "tryFree": "Kostenlos testen",
     "contact": "Kontakt",
+    "enterpriseSubject": "Anfrage Enterprise-Paket",
     "features": {
       "countries": "Land",
       "platforms": "Plattformen",
@@ -171,6 +185,8 @@
       "unlimited": "Unbegrenzt",
       "emailDigest": "E-Mail-Zusammenfassung",
       "instantPush": "Sofort-Push",
+      "instantPushEmail": "Sofort-Push + E-Mail",
+      "allChannels": "Alle Benachrichtigungskanäle",
       "telegram": "Telegram-Bot",
       "emailSupport": "E-Mail-Support",
       "prioritySupport": "Prioritäts-Support",
@@ -273,6 +289,7 @@
     "viewSettings": "Einstellungen anzeigen"
   },
   "footer": {
+    "tagline": "EU-Insolvenz-Monitoring",
     "product": "Produkt",
     "features": "Funktionen",
     "pricing": "Preise",

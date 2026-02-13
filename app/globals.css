@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #171717;
+  --background: #f5f2ec;
+  --foreground: #374151;
+  --accent: #1e40af;
   /* Aukció/raktár hangulatú háttér. Saját kép: másold public/bg-auction.jpg-be és használd: url("/bg-auction.jpg") */
   --bg-image: url("https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80");
 }
@@ -16,8 +17,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0f172a;
-    --foreground: #ededed;
+    --background: #1c1917;
+    --foreground: #e5e7eb;
+    --accent: #3b82f6;
   }
 }
 
@@ -29,15 +31,16 @@ body {
   position: relative;
 }
 
+/* Beige overlay – háttérkép enyhén átjön */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(248, 250, 252, 0.92) 0%,
-    rgba(241, 245, 249, 0.94) 50%,
-    rgba(248, 250, 252, 0.92) 100%
+    rgba(245, 242, 235, 0.96) 0%,
+    rgba(242, 238, 230, 0.97) 50%,
+    rgba(245, 242, 235, 0.96) 100%
   );
   pointer-events: none;
   z-index: 0;
@@ -47,9 +50,19 @@ body::before {
   body::before {
     background: linear-gradient(
       180deg,
-      rgba(15, 23, 42, 0.9) 0%,
-      rgba(15, 23, 42, 0.92) 50%,
-      rgba(15, 23, 42, 0.9) 100%
+      rgba(28, 25, 23, 0.95) 0%,
+      rgba(28, 25, 23, 0.96) 50%,
+      rgba(28, 25, 23, 0.95) 100%
     );
   }
 }
+
+/* Szövegek: sötétebb szürke és kék, jól olvasható beige háttéren (kék dobozon belüli világos szöveg nem érintett) */
+body .text-gray-500 { color: #4b5563; }
+body .text-gray-600 { color: #374151; }
+body .text-gray-700 { color: #1f2937; }
+body .text-gray-900 { color: #111827; }
+body .text-blue-600 { color: #1e40af; }
+body .text-blue-700 { color: #1d4ed8; }
+body a.text-blue-600 { color: #1e40af; }
+body a.text-blue-600:hover { color: #1d4ed8; }

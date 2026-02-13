@@ -117,7 +117,20 @@
   },
   "sources": {
     "title": "Platforms we monitor",
-    "expanding": "Continuously expanding source list"
+    "expanding": "Continuously expanding source list",
+    "countryHu": "Hungary",
+    "countryAt": "Austria",
+    "countryDe": "Germany",
+    "countryEu": "EU marketplaces",
+    "descEer": "Official insolvency asset sales platform",
+    "descEdiktsdatei": "Court announcements",
+    "descKsv": "Creditor protection insolvency list",
+    "descInsolvenz": "Official insolvency notices",
+    "descNetbid": "Industrial auctions",
+    "descProventura": "Machinery, IT, vehicles",
+    "descMachineseeker": "Europe #1 machinery marketplace",
+    "descMascus": "Construction machinery",
+    "descTruckScout": "Commercial vehicles"
   },
   "features": {
     "title": "Everything you need",
@@ -160,6 +173,7 @@
     "popular": "Popular",
     "tryFree": "Try free",
     "contact": "Contact us",
+    "enterpriseSubject": "Enterprise plan inquiry",
     "features": {
       "countries": "country",
       "platforms": "platforms",
@@ -171,6 +185,8 @@
       "unlimited": "Unlimited",
       "emailDigest": "Email digest",
       "instantPush": "Instant push",
+      "instantPushEmail": "Instant push + email",
+      "allChannels": "All notification channels",
       "telegram": "Telegram bot",
       "emailSupport": "Email support",
       "prioritySupport": "Priority support",
@@ -273,6 +289,7 @@
     "viewSettings": "View settings"
   },
   "footer": {
+    "tagline": "EU insolvency monitoring",
     "product": "Product",
     "features": "Features",
     "pricing": "Pricing",
