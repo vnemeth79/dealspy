@@ -1,0 +1,273 @@
+{
+  "common": {
+    "title": "DealSpy.eu",
+    "tagline": "EU-Insolvenz-Monitoring – wir beobachten, Sie profitieren",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "submit": "Absenden",
+    "loading": "Laden...",
+    "success": "Erfolg!",
+    "error": "Ein Fehler ist aufgetreten",
+    "back": "Zurück",
+    "next": "Weiter",
+    "login": "Anmelden",
+    "register": "Registrieren",
+    "logout": "Abmelden",
+    "home": "Startseite",
+    "settings": "Einstellungen"
+  },
+  "errors": {
+    "minCategories": "Wählen Sie mindestens eine Kategorie.",
+    "minCountries": "Wählen Sie mindestens ein Land.",
+    "registerFailed": "Registrierung fehlgeschlagen.",
+    "tryAgain": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+    "loadSettingsFailed": "Einstellungen konnten nicht geladen werden.",
+    "saveFailed": "Speichern fehlgeschlagen.",
+    "generic": "Etwas ist schiefgelaufen."
+  },
+  "register": {
+    "continuePayment": "Zahlung ausführen (nach Testphase)",
+    "checkEmail": "Prüfen Sie Ihr E-Mail-Postfach für den Einstellungen-Link.",
+    "platformsEmpty": "Plattformen (leer = alle)",
+    "backHome": "Zurück zur Startseite",
+    "signUpButton": "Registrieren",
+    "trialSubtitle": "3 Tage kostenlos. Keine Karte erforderlich.",
+    "cancelledMessage": "Zahlung abgebrochen. Sie können jederzeit in den Einstellungen (Link aus der E-Mail) fortfahren.",
+    "billingTitle": "Firmenrechnung",
+    "billingDesc": "Bei Bedarf erscheinen diese Angaben auf der Stripe-Rechnung (EU-USt-ID oder lokale Steuernummer)."
+  },
+  "settingsPage": {
+    "invalidLink": "Ungültiger oder fehlender Link",
+    "invalidLinkDesc": "Verwenden Sie den Link aus Ihrer E-Mail für die Einstellungen.",
+    "subscription": "Abonnement",
+    "noActiveSubscription": "Kein aktives Abonnement – Sie erhalten keine Benachrichtigungen. Bitte zahlen Sie, um fortzufahren.",
+    "enterPayment": "Zahlung ausführen",
+    "manageSubscription": "Abonnement verwalten",
+    "saved": "Einstellungen gespeichert.",
+    "unsubscribeDelete": "Abmelden (Konto löschen)",
+    "platformsEmpty": "Plattformen (leer = alle)"
+  },
+  "successPage": {
+    "invalidSession": "Ungültige Sitzung",
+    "invalidSessionDesc": "Die Zahlung war möglicherweise erfolgreich, die Sitzung konnte aber nicht gefunden werden. Verwenden Sie den Einstellungen-Link aus Ihrer E-Mail.",
+    "thankYou": "Vielen Dank für Ihre Zahlung!",
+    "thankYouDesc": "Ihr Abonnement ist aktiv. Sie erhalten weiterhin Benachrichtigungen gemäß Ihren Einstellungen."
+  },
+  "unsubscribePage": {
+    "failed": "Abmeldung fehlgeschlagen.",
+    "errorGeneric": "Etwas ist schiefgelaufen.",
+    "signUpAgain": "Erneut anmelden",
+    "processing": "Wird verarbeitet..."
+  },
+  "hero": {
+    "title": "Insolvenz-Vermögen & Auktionen aus ganz Europa.",
+    "titleHighlight": "Automatisch. Übersetzt. Direkt zu Ihnen.",
+    "subtitle": "DealSpy überwacht Insolvenz- und Auktionsportale in Ungarn, Österreich und Deutschland. Erhalten Sie Benachrichtigungen über relevante Angebote – Server, Maschinen, Fahrzeuge oder Immobilien.",
+    "cta": "3 Tage kostenlos testen",
+    "ctaSecondary": "So funktioniert es"
+  },
+  "badges": {
+    "platforms": "10+ Plattformen überwacht",
+    "updates": "2x täglich aktualisiert",
+    "translation": "Automatische Übersetzung",
+    "savings": "30-70% unter Marktpreis"
+  },
+  "problem": {
+    "title": "Kennen Sie das?",
+    "tooMany": {
+      "title": "Zu viele Plattformen",
+      "desc": "10+ verschiedene Seiten täglich prüfen. Wer hat dafür Zeit?"
+    },
+    "language": {
+      "title": "Sprachbarriere",
+      "desc": "Die besten Angebote sind auf Deutsch. Wer übersetzt das?"
+    },
+    "timing": {
+      "title": "Angebote verpasst",
+      "desc": "Bis Sie es merken, ist die Auktion vorbei oder ein anderer hat zugeschlagen."
+    },
+    "solution": "DealSpy löst all das.",
+    "solutionDesc": "Wir überwachen alle relevanten Plattformen an einem Ort, übersetzen automatisch und benachrichtigen Sie sofort. Sie konzentrieren sich auf den Kauf."
+  },
+  "howItWorks": {
+    "title": "So funktioniert es",
+    "step1": {
+      "title": "Einrichten",
+      "desc": "Wählen Sie Kategorien, Länder und Schlüsselwörter.",
+      "badge": "2 Min. Einrichtung"
+    },
+    "step2": {
+      "title": "Überwachen",
+      "desc": "DealSpy durchsucht die Plattformen zweimal täglich.",
+      "badge": "Vollautomatisch"
+    },
+    "step3": {
+      "title": "Benachrichtigen",
+      "desc": "Sofortige Alerts per Push, E-Mail oder Telegram bei neuen Deals.",
+      "badge": "Echtzeit-Benachrichtigungen"
+    }
+  },
+  "sources": {
+    "title": "Diese Plattformen überwachen wir",
+    "expanding": "Ständig wachsende Quellenliste"
+  },
+  "features": {
+    "title": "Alles, was Sie brauchen",
+    "translation": {
+      "title": "Mehrsprachige Übersetzung",
+      "desc": "Deutsche Anzeigen erscheinen automatisch auf Ungarisch und Englisch."
+    },
+    "filtering": {
+      "title": "Intelligente Filter",
+      "desc": "Nach Kategorie, Land, Schlüsselwort. Nur was Sie interessiert."
+    },
+    "notifications": {
+      "title": "Sofort-Benachrichtigungen",
+      "desc": "Push, Telegram oder E-Mail – Sie entscheiden."
+    },
+    "digest": {
+      "title": "Tägliche Zusammenfassung",
+      "desc": "Alle neuen Deals in einer täglichen E-Mail."
+    },
+    "deadline": {
+      "title": "Fristen-Erinnerung",
+      "desc": "Sehen Sie, wann Auktionen enden. Verpassen Sie kein Angebot."
+    },
+    "savings": {
+      "title": "30-70% Ersparnis",
+      "desc": "Insolvenz- und Auktionsware wird oft zu Bruchteilspreisen angeboten."
+    },
+    "ai": {
+      "title": "KI für zuverlässige Treffer",
+      "desc": "Wir setzen KI ein, um Anzeigen präzise zu erfassen und zu kategorisieren – auch wenn Portale ihre Seiten ändern. Sie erhalten konstante, vertrauenswürdige Ergebnisse."
+    }
+  },
+  "pricing": {
+    "title": "Einfache, transparente Preise",
+    "subtitle": "3 Tage kostenlose Testphase bei jedem Plan.",
+    "monthly": "Monatlich",
+    "yearly": "Jährlich",
+    "yearlySavings": "20% sparen",
+    "perMonth": "/Monat",
+    "popular": "Beliebt",
+    "tryFree": "Kostenlos testen",
+    "contact": "Kontakt",
+    "features": {
+      "countries": "Land",
+      "platforms": "Plattformen",
+      "categories": "Kategorien",
+      "keywords": "Schlüsselwörter",
+      "allCountries": "Alle Länder",
+      "allPlatforms": "Alle Plattformen",
+      "allCategories": "Alle Kategorien",
+      "unlimited": "Unbegrenzt",
+      "emailDigest": "E-Mail-Zusammenfassung",
+      "instantPush": "Sofort-Push",
+      "telegram": "Telegram-Bot",
+      "emailSupport": "E-Mail-Support",
+      "prioritySupport": "Prioritäts-Support",
+      "dedicatedSupport": "Persönlicher Support",
+      "api": "API-Zugang"
+    },
+    "trust": {
+      "secure": "Sichere Zahlung über Stripe",
+      "cancel": "Jederzeit kündbar",
+      "refund": "3 Tage Geld-zurück-Garantie"
+    }
+  },
+  "faq": {
+    "title": "Häufige Fragen",
+    "trial": {
+      "q": "Wie funktioniert die 3-Tage-Testphase?",
+      "a": "Nach der Registrierung nutzen Sie 3 Tage kostenlos alle Funktionen. Zahlungsdaten werden nur am Ende der Testphase abgefragt, wenn Sie weitermachen möchten."
+    },
+    "payment": {
+      "q": "Welche Zahlungsmethoden akzeptieren Sie?",
+      "a": "Kartenzahlung (Visa, Mastercard, American Express) über Stripe."
+    },
+    "cancel": {
+      "q": "Kann ich jederzeit kündigen?",
+      "a": "Ja. Nach der Kündigung haben Sie bis zum Ende des bezahlten Zeitraums Zugang."
+    },
+    "data": {
+      "q": "Woher stammen die Daten?",
+      "a": "Ausschließlich aus öffentlichen Quellen: Gerichtspublikationen, Insolvenzportale, Auktionsseiten."
+    },
+    "frequency": {
+      "q": "Wie oft werden die Daten aktualisiert?",
+      "a": "Zweimal täglich: 10:00 und 15:00 Uhr (MEZ)."
+    },
+    "api": {
+      "q": "Gibt es API-Zugang?",
+      "a": "Ja, im Enterprise-Paket. Sie können den Deal-Feed per REST-API integrieren."
+    }
+  },
+  "cta": {
+    "title": "Verpassen Sie kein Angebot",
+    "subtitle": "Dabei sein, wenn die besten Insolvenz- und Auktionsangebote automatisch eintreffen.",
+    "button": "Kostenlose Testphase – ohne Karte"
+  },
+  "form": {
+    "email": "E-Mail-Adresse",
+    "emailPlaceholder": "beispiel@email.com",
+    "password": "Passwort",
+    "passwordPlaceholder": "Mindestens 8 Zeichen",
+    "language": "Sprache",
+    "categories": "Kategorien",
+    "categoriesHelp": "Wählen Sie die gewünschten Deal-Typen",
+    "countries": "Länder",
+    "countriesHelp": "Welche Länder interessieren Sie",
+    "keywords": "Schlüsselwörter",
+    "keywordsPlaceholder": "Server, GPU, CNC",
+    "keywordsHelp": "Kommagetrennt. Leer = alle relevanten Deals",
+    "channels": "Benachrichtigungskanäle",
+    "terms": "Ich akzeptiere die AGB und die Datenschutzerklärung",
+    "billingCompanyName": "Firmenname",
+    "billingTaxId": "Steuernummer (EU-USt-ID oder lokale)",
+    "billingTaxIdHelp": "z. B. HU12345678 (EU) oder 12345678 (Ungarn)",
+    "billingAddressLine1": "Rechnungsadresse (Straße, Hausnummer)",
+    "billingAddressLine2": "Adresszeile 2 (optional)",
+    "billingCity": "Stadt",
+    "billingPostalCode": "Postleitzahl",
+    "billingCountry": "Land"
+  },
+  "categories": {
+    "it": "IT / Server",
+    "machines": "Maschinen",
+    "vehicles": "Fahrzeuge",
+    "property": "Immobilien"
+  },
+  "countries": {
+    "hu": "Ungarn",
+    "at": "Österreich",
+    "de": "Deutschland"
+  },
+  "channels": {
+    "push": "Browser-Push",
+    "pushDesc": "Sofort bei neuem relevanten Deal",
+    "email": "E-Mail-Zusammenfassung",
+    "emailDesc": "Täglich um 15:00 Uhr",
+    "telegram": "Telegram-Bot",
+    "telegramDesc": "Sofort-Benachrichtigungen über @DealSpyBot"
+  },
+  "success": {
+    "title": "Registrierung erfolgreich!",
+    "subtitle": "Ihre 3-Tage-Testphase hat begonnen.",
+    "firstNotification": "Die erste Benachrichtigung erhalten Sie heute um 15:00 Uhr.",
+    "telegramConnect": "Telegram-Bot verbinden",
+    "viewSettings": "Einstellungen anzeigen"
+  },
+  "footer": {
+    "product": "Produkt",
+    "features": "Funktionen",
+    "pricing": "Preise",
+    "sources": "Quellen",
+    "company": "Unternehmen",
+    "about": "Über uns",
+    "impressum": "Impressum",
+    "privacy": "Datenschutz",
+    "terms": "AGB",
+    "contact": "Kontakt",
+    "copyright": "Alle Rechte vorbehalten"
+  }
+}

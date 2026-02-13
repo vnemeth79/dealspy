@@ -1,0 +1,273 @@
+{
+  "common": {
+    "title": "DealSpy.eu",
+    "tagline": "EU csődvagyon monitoring – mi figyeljük, te vásárolsz",
+    "save": "Mentés",
+    "cancel": "Mégse",
+    "submit": "Küldés",
+    "loading": "Betöltés...",
+    "success": "Sikeres!",
+    "error": "Hiba történt",
+    "back": "Vissza",
+    "next": "Tovább",
+    "login": "Bejelentkezés",
+    "register": "Regisztráció",
+    "logout": "Kijelentkezés",
+    "home": "Főoldal",
+    "settings": "Beállítások"
+  },
+  "errors": {
+    "minCategories": "Válassz legalább egy kategóriát.",
+    "minCountries": "Válassz legalább egy országot.",
+    "registerFailed": "Regisztráció sikertelen.",
+    "tryAgain": "Hiba történt. Próbáld újra.",
+    "loadSettingsFailed": "Beállítások betöltése sikertelen.",
+    "saveFailed": "Mentés sikertelen.",
+    "generic": "Hiba történt."
+  },
+  "register": {
+    "continuePayment": "Fizetés megadása (próba után)",
+    "checkEmail": "Ellenőrizd az email fiókodat a beállítások linkkel.",
+    "platformsEmpty": "Platformok (üres = mind)",
+    "backHome": "Vissza a főoldalra",
+    "signUpButton": "Regisztráció",
+    "trialSubtitle": "3 nap ingyen. Nincs bankkártya kötelező.",
+    "cancelledMessage": "Fizetés megszakítva. Bármikor folytathatod a beállításokból az emailben kapott linkkel.",
+    "billingTitle": "Céges számlázás",
+    "billingDesc": "Ha céges számlát kérsz, a Stripe számlára kerülnek az alábbi adatok (EU vagy magyar adószám)."
+  },
+  "settingsPage": {
+    "invalidLink": "Érvénytelen vagy hiányzó link",
+    "invalidLinkDesc": "A beállításokhoz az emailben kapott linket használd.",
+    "subscription": "Előfizetés",
+    "noActiveSubscription": "Nincs aktív előfizetés – az értesítéseket nem kapod meg. Fizesd az előfizetést a folytatáshoz.",
+    "enterPayment": "Fizetés megadása",
+    "manageSubscription": "Előfizetés kezelése",
+    "saved": "Beállítások mentve.",
+    "unsubscribeDelete": "Leiratkozás (fiók törlése)",
+    "platformsEmpty": "Platformok (üres = mind)"
+  },
+  "successPage": {
+    "invalidSession": "Érvénytelen munkamenet",
+    "invalidSessionDesc": "A fizetés sikeres lehet, de a munkamenet nem található. Használd a beállítások linket az emailből.",
+    "thankYou": "Köszönjük a fizetést!",
+    "thankYouDesc": "Az előfizetésed aktív. Az értesítéseket továbbra is megkapod a beállításaid alapján."
+  },
+  "unsubscribePage": {
+    "failed": "Leiratkozás sikertelen.",
+    "errorGeneric": "Hiba történt.",
+    "signUpAgain": "Újra feliratkozás",
+    "processing": "Folyamatban..."
+  },
+  "hero": {
+    "title": "Csődvagyon és aukciók egész Európából.",
+    "titleHighlight": "Automatikusan, magyarul, az öledbe.",
+    "subtitle": "A DealSpy figyeli helyetted a magyar, osztrák és német csődvagyon portálokat. Értesítünk, ha megjelenik amit keresel – legyen az szerver, gép, jármű vagy ingatlan.",
+    "cta": "Próbáld ki ingyen 3 napig",
+    "ctaSecondary": "Nézd meg, hogyan működik"
+  },
+  "badges": {
+    "platforms": "10+ platform figyelése",
+    "updates": "Napi 2x frissítés",
+    "translation": "Automatikus fordítás",
+    "savings": "30-70% a piaci ár alatt"
+  },
+  "problem": {
+    "title": "Ismered ezt a problémát?",
+    "tooMany": {
+      "title": "Túl sok platform",
+      "desc": "10+ különböző oldalt kellene naponta nézni. Ki ér rá erre?"
+    },
+    "language": {
+      "title": "Nyelvi akadály",
+      "desc": "A legjobb lehetőségek németül vannak. Ki ér rá ezt fordítgatni?"
+    },
+    "timing": {
+      "title": "Lekésel a dealekről",
+      "desc": "Mire észreveszed, már lejárt az aukció vagy más vitte el."
+    },
+    "solution": "A DealSpy megoldja mindezt.",
+    "solutionDesc": "Egyetlen felületen figyeljük az összes releváns platformot, automatikusan lefordítjuk a találatokat, és azonnal értesítünk. Te csak a vásárlásra koncentrálj."
+  },
+  "howItWorks": {
+    "title": "Hogyan működik?",
+    "step1": {
+      "title": "Beállítasz",
+      "desc": "Válaszd ki a kategóriákat, országokat és kulcsszavakat.",
+      "badge": "2 perc beállítás"
+    },
+    "step2": {
+      "title": "Figyel",
+      "desc": "A DealSpy naponta kétszer végigfésüli a platformokat és megtalálja a releváns lehetőségeket.",
+      "badge": "Teljesen automatikus"
+    },
+    "step3": {
+      "title": "Értesít",
+      "desc": "Azonnal értesítünk push üzenetben, emailben vagy Telegramon, ha új deal érkezik.",
+      "badge": "Valós idejű alertek"
+    }
+  },
+  "sources": {
+    "title": "Ezeket a platformokat figyeljük",
+    "expanding": "Folyamatosan bővülő forráslista"
+  },
+  "features": {
+    "title": "Minden, amire szükséged van",
+    "translation": {
+      "title": "Többnyelvű fordítás",
+      "desc": "A német hirdetések automatikusan magyarul és angolul is megjelennek. Nem kell fordítgatni."
+    },
+    "filtering": {
+      "title": "Intelligens szűrés",
+      "desc": "Kategória, ország, kulcsszó alapján csak azt kapod, ami tényleg érdekel. Semmi spam."
+    },
+    "notifications": {
+      "title": "Azonnali értesítések",
+      "desc": "Push notification, Telegram vagy email – te döntöd el, hogyan értesítsünk."
+    },
+    "digest": {
+      "title": "Napi összefoglaló",
+      "desc": "Ha nem szereted az azonnali értesítéseket, napi email digest-ben is megkaphatod az összes új lehetőséget."
+    },
+    "deadline": {
+      "title": "Határidő figyelmeztetés",
+      "desc": "Látod, mikor jár le az aukció vagy pályázat. Soha többé nem késel le egy jó lehetőséget."
+    },
+    "savings": {
+      "title": "30-70% megtakarítás",
+      "desc": "A csődvagyonból és aukciókból beszerzett eszközök jellemzően töredék áron kelnek el."
+    },
+    "ai": {
+      "title": "AI a biztos találatokért",
+      "desc": "Mesterséges intelligencia segíti a hirdetések pontos összegyűjtését és kategóriabeosztását – még akkor is, ha a portálok megváltoztatják oldalaikat."
+    }
+  },
+  "pricing": {
+    "title": "Egyszerű, átlátható árazás",
+    "subtitle": "3 napos ingyenes próbaidőszak minden csomaghoz.",
+    "monthly": "Havi fizetés",
+    "yearly": "Éves fizetés",
+    "yearlySavings": "20% megtakarítás",
+    "perMonth": "/hó",
+    "popular": "Népszerű",
+    "tryFree": "Próbáld ki ingyen",
+    "contact": "Kapcsolatfelvétel",
+    "features": {
+      "countries": "ország",
+      "platforms": "platform",
+      "categories": "kategória",
+      "keywords": "kulcsszó",
+      "allCountries": "Összes ország",
+      "allPlatforms": "Összes platform",
+      "allCategories": "Összes kategória",
+      "unlimited": "Korlátlan",
+      "emailDigest": "Email összefoglaló",
+      "instantPush": "Azonnali push",
+      "telegram": "Telegram bot",
+      "emailSupport": "Email support",
+      "prioritySupport": "Prioritás support",
+      "dedicatedSupport": "Dedikált support",
+      "api": "API hozzáférés"
+    },
+    "trust": {
+      "secure": "Biztonságos fizetés Stripe-on keresztül",
+      "cancel": "Bármikor lemondható",
+      "refund": "3 napos pénzvisszafizetés"
+    }
+  },
+  "faq": {
+    "title": "Gyakran ismételt kérdések",
+    "trial": {
+      "q": "Hogyan működik a 3 napos próbaidőszak?",
+      "a": "A regisztráció után 3 napig ingyenesen használhatod a választott csomag összes funkcióját. Bankkártya adatokat csak a próbaidőszak végén kérünk, ha folytatni szeretnéd."
+    },
+    "payment": {
+      "q": "Milyen fizetési módokat fogadtok el?",
+      "a": "Bankkártyás fizetést (Visa, Mastercard, American Express) a Stripe biztonságos fizetési platformján keresztül."
+    },
+    "cancel": {
+      "q": "Lemondhatom bármikor az előfizetést?",
+      "a": "Igen, az előfizetés bármikor lemondható. A lemondás után a már kifizetett időszak végéig használhatod a szolgáltatást."
+    },
+    "data": {
+      "q": "Honnan származnak az adatok?",
+      "a": "Kizárólag nyilvános, hivatalos forrásokból: bírósági hirdetmények, felszámolói portálok, aukciós házak weboldalai."
+    },
+    "frequency": {
+      "q": "Milyen gyakran frissülnek az adatok?",
+      "a": "Naponta kétszer: reggel 10:00-kor és délután 15:00-kor (CET)."
+    },
+    "api": {
+      "q": "Van API hozzáférés?",
+      "a": "Az Enterprise csomagban igen. REST API-n keresztül saját rendszerbe integrálhatod a deal feed-et."
+    }
+  },
+  "cta": {
+    "title": "Ne maradj le a következő jó üzletről",
+    "subtitle": "Csatlakozz azokhoz, akik már automatikusan kapják a legjobb csődvagyon és aukciós lehetőségeket.",
+    "button": "Ingyenes próba indítása – bankkártya nélkül"
+  },
+  "form": {
+    "email": "Email cím",
+    "emailPlaceholder": "pelda@email.com",
+    "password": "Jelszó",
+    "passwordPlaceholder": "Minimum 8 karakter",
+    "language": "Nyelv",
+    "categories": "Kategóriák",
+    "categoriesHelp": "Válaszd ki, milyen típusú deal-eket keresel",
+    "countries": "Országok",
+    "countriesHelp": "Mely országok érdekelnek",
+    "keywords": "Kulcsszavak",
+    "keywordsPlaceholder": "szerver, GPU, CNC",
+    "keywordsHelp": "Vesszővel elválasztva. Üres = minden releváns deal",
+    "channels": "Értesítési csatornák",
+    "terms": "Elfogadom az ÁSZF-et és az Adatvédelmi tájékoztatót",
+    "billingCompanyName": "Cég neve",
+    "billingTaxId": "Adószám (EU ÁFA vagy magyar adószám)",
+    "billingTaxIdHelp": "Pl. HU12345678 (EU) vagy 12345678 (magyar)",
+    "billingAddressLine1": "Számlázási cím (utca, házszám)",
+    "billingAddressLine2": "Cím második sor (opcionális)",
+    "billingCity": "Város",
+    "billingPostalCode": "Irányítószám",
+    "billingCountry": "Ország"
+  },
+  "categories": {
+    "it": "IT / Szerverek",
+    "machines": "Gépek",
+    "vehicles": "Járművek",
+    "property": "Ingatlan"
+  },
+  "countries": {
+    "hu": "Magyarország",
+    "at": "Ausztria",
+    "de": "Németország"
+  },
+  "channels": {
+    "push": "Böngésző push értesítés",
+    "pushDesc": "Azonnal, ha új releváns deal érkezik",
+    "email": "Email összefoglaló",
+    "emailDesc": "Naponta 15:00-kor a napi deal-ek",
+    "telegram": "Telegram bot",
+    "telegramDesc": "Azonnali értesítés a @DealSpyBot-on"
+  },
+  "success": {
+    "title": "Sikeres regisztráció!",
+    "subtitle": "A 3 napos próbaidőszakod elkezdődött.",
+    "firstNotification": "Az első értesítést ma 15:00-kor kapod.",
+    "telegramConnect": "Telegram bot összekapcsolása",
+    "viewSettings": "Beállítások megtekintése"
+  },
+  "footer": {
+    "product": "Termék",
+    "features": "Funkciók",
+    "pricing": "Árazás",
+    "sources": "Források",
+    "company": "Céginfo",
+    "about": "Rólunk",
+    "impressum": "Impressum",
+    "privacy": "Adatvédelem",
+    "terms": "ÁSZF",
+    "contact": "Kapcsolat",
+    "copyright": "Minden jog fenntartva"
+  }
+}

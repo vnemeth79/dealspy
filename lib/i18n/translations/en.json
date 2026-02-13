@@ -1,0 +1,273 @@
+{
+  "common": {
+    "title": "DealSpy.eu",
+    "tagline": "EU insolvency monitoring – we watch, you win",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "success": "Success!",
+    "error": "An error occurred",
+    "back": "Back",
+    "next": "Next",
+    "login": "Log in",
+    "register": "Sign up",
+    "logout": "Log out",
+    "home": "Home",
+    "settings": "Settings"
+  },
+  "errors": {
+    "minCategories": "Select at least one category.",
+    "minCountries": "Select at least one country.",
+    "registerFailed": "Registration failed.",
+    "tryAgain": "Something went wrong. Please try again.",
+    "loadSettingsFailed": "Failed to load settings.",
+    "saveFailed": "Save failed.",
+    "generic": "Something went wrong."
+  },
+  "register": {
+    "continuePayment": "Continue to payment (after trial)",
+    "checkEmail": "Check your email for the settings link.",
+    "platformsEmpty": "Platforms (empty = all)",
+    "backHome": "Back to home",
+    "signUpButton": "Sign up",
+    "trialSubtitle": "3 days free. No credit card required.",
+    "cancelledMessage": "Payment cancelled. You can continue anytime from settings using the link in your email.",
+    "billingTitle": "Company billing",
+    "billingDesc": "If you need an invoice for your company, these details will appear on the Stripe invoice (EU or local tax ID)."
+  },
+  "settingsPage": {
+    "invalidLink": "Invalid or missing link",
+    "invalidLinkDesc": "Use the link from your email to access settings.",
+    "subscription": "Subscription",
+    "noActiveSubscription": "No active subscription – you will not receive notifications. Pay to continue.",
+    "enterPayment": "Enter payment",
+    "manageSubscription": "Manage subscription",
+    "saved": "Settings saved.",
+    "unsubscribeDelete": "Unsubscribe (delete account)",
+    "platformsEmpty": "Platforms (empty = all)"
+  },
+  "successPage": {
+    "invalidSession": "Invalid session",
+    "invalidSessionDesc": "Payment may have succeeded, but the session could not be found. Use the settings link from your email.",
+    "thankYou": "Thank you for your payment!",
+    "thankYouDesc": "Your subscription is active. You will continue to receive notifications based on your settings."
+  },
+  "unsubscribePage": {
+    "failed": "Unsubscribe failed.",
+    "errorGeneric": "Something went wrong.",
+    "signUpAgain": "Sign up again",
+    "processing": "Processing..."
+  },
+  "hero": {
+    "title": "EU Insolvency Assets & Auctions.",
+    "titleHighlight": "Delivered to you automatically.",
+    "subtitle": "DealSpy monitors bankruptcy and auction platforms across Hungary, Austria, and Germany. Get notified when relevant deals appear – servers, machinery, vehicles, or real estate.",
+    "cta": "Try free for 3 days",
+    "ctaSecondary": "See how it works"
+  },
+  "badges": {
+    "platforms": "10+ platforms monitored",
+    "updates": "2x daily updates",
+    "translation": "Auto-translation",
+    "savings": "30-70% below market price"
+  },
+  "problem": {
+    "title": "Sound familiar?",
+    "tooMany": {
+      "title": "Too many platforms",
+      "desc": "10+ different sites to check daily. Who has time for that?"
+    },
+    "language": {
+      "title": "Language barrier",
+      "desc": "The best deals are in German. Who has time to translate?"
+    },
+    "timing": {
+      "title": "Missing out",
+      "desc": "By the time you notice, the auction has ended or someone else got it."
+    },
+    "solution": "DealSpy solves all of this.",
+    "solutionDesc": "We monitor all relevant platforms in one place, automatically translate the listings, and notify you instantly. You just focus on buying."
+  },
+  "howItWorks": {
+    "title": "How it works",
+    "step1": {
+      "title": "Configure",
+      "desc": "Choose your categories, countries, and keywords.",
+      "badge": "2 min setup"
+    },
+    "step2": {
+      "title": "Monitor",
+      "desc": "DealSpy scans platforms twice daily and finds relevant opportunities.",
+      "badge": "Fully automatic"
+    },
+    "step3": {
+      "title": "Notify",
+      "desc": "Get instant alerts via push, email, or Telegram when new deals arrive.",
+      "badge": "Real-time alerts"
+    }
+  },
+  "sources": {
+    "title": "Platforms we monitor",
+    "expanding": "Continuously expanding source list"
+  },
+  "features": {
+    "title": "Everything you need",
+    "translation": {
+      "title": "Multi-language translation",
+      "desc": "German listings automatically appear in English. No manual translation needed."
+    },
+    "filtering": {
+      "title": "Smart filtering",
+      "desc": "Filter by category, country, keywords. Get only what you're interested in. No spam."
+    },
+    "notifications": {
+      "title": "Instant notifications",
+      "desc": "Push notification, Telegram, or email – you decide how to be notified."
+    },
+    "digest": {
+      "title": "Daily digest",
+      "desc": "Prefer not to get instant alerts? Get all new deals in a daily email summary."
+    },
+    "deadline": {
+      "title": "Deadline alerts",
+      "desc": "See when auctions or tenders expire. Never miss a good opportunity again."
+    },
+    "savings": {
+      "title": "30-70% savings",
+      "desc": "Assets from insolvency and auctions typically sell at a fraction of market price."
+    },
+    "ai": {
+      "title": "AI for reliable matches",
+      "desc": "We use AI to collect and categorize listings accurately – even when portals change their pages. You get consistent, trustworthy results."
+    }
+  },
+  "pricing": {
+    "title": "Simple, transparent pricing",
+    "subtitle": "3-day free trial with every plan.",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "yearlySavings": "Save 20%",
+    "perMonth": "/mo",
+    "popular": "Popular",
+    "tryFree": "Try free",
+    "contact": "Contact us",
+    "features": {
+      "countries": "country",
+      "platforms": "platforms",
+      "categories": "categories",
+      "keywords": "keywords",
+      "allCountries": "All countries",
+      "allPlatforms": "All platforms",
+      "allCategories": "All categories",
+      "unlimited": "Unlimited",
+      "emailDigest": "Email digest",
+      "instantPush": "Instant push",
+      "telegram": "Telegram bot",
+      "emailSupport": "Email support",
+      "prioritySupport": "Priority support",
+      "dedicatedSupport": "Dedicated support",
+      "api": "API access"
+    },
+    "trust": {
+      "secure": "Secure payment via Stripe",
+      "cancel": "Cancel anytime",
+      "refund": "3-day money-back guarantee"
+    }
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "trial": {
+"q": "How does the 3-day trial work?",
+    "a": "After registration, you can use all features of your chosen plan for 3 days for free. We only ask for payment details at the end of the trial if you wish to continue."
+    },
+    "payment": {
+      "q": "What payment methods do you accept?",
+      "a": "Credit card payments (Visa, Mastercard, American Express) via Stripe's secure payment platform."
+    },
+    "cancel": {
+      "q": "Can I cancel my subscription anytime?",
+      "a": "Yes, you can cancel your subscription at any time. You'll continue to have access until the end of your paid period."
+    },
+    "data": {
+      "q": "Where does the data come from?",
+      "a": "Exclusively from public, official sources: court announcements, liquidator portals, auction house websites."
+    },
+    "frequency": {
+      "q": "How often is the data updated?",
+      "a": "Twice daily: at 10:00 AM and 3:00 PM (CET)."
+    },
+    "api": {
+      "q": "Is there API access?",
+      "a": "Yes, in the Enterprise plan. You can integrate the deal feed via REST API."
+    }
+  },
+  "cta": {
+    "title": "Don't miss the next great deal",
+    "subtitle": "Join those who already receive the best insolvency and auction opportunities automatically.",
+    "button": "Start free trial – no credit card required"
+  },
+  "form": {
+    "email": "Email address",
+    "emailPlaceholder": "example@email.com",
+    "password": "Password",
+    "passwordPlaceholder": "Minimum 8 characters",
+    "language": "Language",
+    "categories": "Categories",
+    "categoriesHelp": "Select what types of deals interest you",
+    "countries": "Countries",
+    "countriesHelp": "Which countries are you interested in",
+    "keywords": "Keywords",
+    "keywordsPlaceholder": "server, GPU, CNC",
+    "keywordsHelp": "Comma-separated. Empty = all relevant deals",
+    "channels": "Notification channels",
+    "terms": "I accept the Terms of Service and Privacy Policy",
+    "billingCompanyName": "Company name",
+    "billingTaxId": "Tax ID (EU VAT or local)",
+    "billingTaxIdHelp": "E.g. HU12345678 (EU) or 12345678 (Hungarian)",
+    "billingAddressLine1": "Billing address (street, number)",
+    "billingAddressLine2": "Address line 2 (optional)",
+    "billingCity": "City",
+    "billingPostalCode": "Postal code",
+    "billingCountry": "Country"
+  },
+  "categories": {
+    "it": "IT / Servers",
+    "machines": "Machinery",
+    "vehicles": "Vehicles",
+    "property": "Real Estate"
+  },
+  "countries": {
+    "hu": "Hungary",
+    "at": "Austria",
+    "de": "Germany"
+  },
+  "channels": {
+    "push": "Browser push notification",
+    "pushDesc": "Instantly when a new relevant deal arrives",
+    "email": "Email digest",
+    "emailDesc": "Daily at 3:00 PM with the day's deals",
+    "telegram": "Telegram bot",
+    "telegramDesc": "Instant notifications via @DealSpyBot"
+  },
+  "success": {
+    "title": "Registration successful!",
+    "subtitle": "Your 3-day trial has started.",
+    "firstNotification": "You'll receive your first notification today at 3:00 PM.",
+    "telegramConnect": "Connect Telegram bot",
+    "viewSettings": "View settings"
+  },
+  "footer": {
+    "product": "Product",
+    "features": "Features",
+    "pricing": "Pricing",
+    "sources": "Sources",
+    "company": "Company",
+    "about": "About",
+    "impressum": "Impressum",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "contact": "Contact",
+    "copyright": "All rights reserved"
+  }
+}
